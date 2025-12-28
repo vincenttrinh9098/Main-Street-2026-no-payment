@@ -1,0 +1,400 @@
+/* ============================================
+   MAIN STREET BAGEL CAFE - STYLES
+   ============================================ */
+
+/* CSS Variables (Design System) */
+:root {
+  /* Colors */
+  --cream: #FAF3E7;
+  --cream-dark: #F0E6D6;
+  --brown: #6B4F3F;
+  --brown-light: #8B7355;
+  --tan: #C8A97E;
+  --coral: #E85C3A;
+  --coral-hover: #D44A28;
+  --white: #FFFFFF;
+  --muted: #9B8B7A;
+
+  /* Typography */
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body: 'Source Sans 3', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  /* Spacing */
+  --section-padding: 4rem;
+  --container-max: 1200px;
+}
+
+/* Reset & Base */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--cream);
+  color: var(--brown);
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  line-height: 1.2;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Container */
+.container {
+  max-width: 1200px; /* or whatever max width you want */
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 1rem; /* optional padding */
+}
+
+
+.container-narrow {
+  max-width: 800px;
+}
+/* ============================================
+   HEADER & NAVIGATION
+   ============================================ */
+
+.header {
+  position: relative;        /* no longer fixed */
+  z-index: 100;
+  background-color: rgba(250, 243, 231, 0.95);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--cream-dark);
+}
+
+.nav {
+  display: flex;                    
+  justify-content: center;           /* center links horizontally */
+  align-items: center;               /* center links vertically */
+  gap: 3rem;                         
+  padding: 1rem 2rem;                
+}
+
+.nav-link {
+  font-family: var(--font-body);     
+  font-weight: 500;                  
+  font-size: 1rem;                   
+  color: var(--brown);               
+  padding: 0.5rem 1rem;              
+  border-radius: 9999px;             
+  transition: color 0.3s ease;       
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: var(--coral);               
+}
+
+/* Mobile / iPhone */
+@media (max-width: 480px) {
+  .nav {
+    padding: 0.8rem 1rem;    
+    gap: 1.5rem;             
+  }
+
+  .nav-link {
+    font-size: 0.9rem;       
+    padding: 0.3rem 0.6rem;  
+  }
+}
+
+/* ============================================
+   MENU SUB NAVIGATION
+   ============================================ */
+
+.menu-subnav {
+  position: sticky;                  /* sticks when scrolling */
+  top: 0;                             /* sticks to top of viewport */
+  z-index: 99;                        /* above content but below header */
+  display: flex;
+  justify-content: center;            /* center nav items on desktop */
+  gap: 2rem;
+  padding: 0.5rem 1rem;
+  background-color: var(--cream-dark);
+  border-bottom: 1px solid var(--tan);
+
+  /* Desktop defaults */
+  overflow-x: visible;
+  white-space: normal;
+}
+
+.menu-subnav-link {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--brown);
+  padding: 0.4rem 0.8rem;
+  border-radius: 9999px;
+  transition: color 0.2s ease, background-color 0.2s ease;
+
+  flex: 0 0 auto; /* prevent shrinking on mobile scroll */
+}
+
+/* ============================================
+   MOBILE / SMALL SCREENS HORIZONTAL SCROLL
+   ============================================ */
+@media (max-width: 768px) {
+  .menu-subnav {
+    justify-content: flex-start;      /* align left for scrolling */
+    overflow-x: auto;                 /* enable horizontal scroll */
+    white-space: nowrap;              /* keep items in single line */
+    -webkit-overflow-scrolling: touch; /* smooth scroll on iOS */
+    scrollbar-width: none;            /* hides scrollbar on Firefox */
+  }
+
+  .menu-subnav::-webkit-scrollbar {
+    display: none;                    /* hides scrollbar on Chrome/Safari */
+  }
+
+  .menu-subnav-link {
+    margin-right: 1rem;               /* spacing for scrollable links */
+  }
+}
+
+/* ============================================
+   PAGE CONTENT SPACING
+   ============================================ */
+
+/* Add some top margin so content doesn’t overlap menu subnav */
+main {
+  margin-top: 1rem; /* adjust if needed */
+}
+
+
+
+
+
+/* ============================================
+   MENU PAGE
+   ============================================ */
+.menu-page {
+  padding: var(--section-padding) 1rem; /* space around the whole menu page */
+}
+
+.page-title {
+  font-size: clamp(5rem, 5vw, 3rem); /* responsive title size based on screen width */
+  font-weight: 700;                 /* bold title text */
+  text-align: center;               /* center the title */
+  margin-bottom: 0.5rem;            /* space below the title */
+  animation: fadeIn 0.8s ease-out;  /* fade-in animation */
+}
+
+.page-subtitle {
+  font-size: 1.5rem;                           /* subtitle text size */
+  color: var(--muted);                         /* muted text color */
+  text-align: center;                          /* center subtitle */
+  margin-bottom: 3rem;                         /* space below subtitle */
+  animation: fadeIn 0.8s ease-out 0.3s both;   /* delayed fade-in */
+}
+
+.menu-category {
+  margin-bottom: 3rem; /* space between menu categories */
+}
+
+.category-title {
+  font-size: 1.5rem;              /* category heading size */
+  font-weight: 600;               /* semi-bold text */
+  color: var(--brown);            /* category title color */
+  padding-bottom: 0.75rem;        /* space under the text */
+  border-bottom: 2px solid var(--tan); /* underline separator */
+  margin-bottom: 1.5rem;          /* space below category title */
+}
+
+.menu-grid {
+  display: grid;                                         /* use CSS Grid layout */
+  gap: 1rem;                                             /* space between boxes */
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* responsive column width */
+  justify-content: start;                                /* align grid items to the left */
+}
+
+@media (max-width: 480px) {
+  .menu-grid {
+    grid-template-columns: 1fr; /* stack boxes in one column on small screens */
+  }
+}
+
+@media (min-width: 640px) {
+  .menu-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 columns on medium screens */
+  }
+}
+
+@media (min-width: 1024px) {
+  .menu-grid {
+    grid-template-columns: repeat(2, 1fr); /* keep 2 columns on large screens */
+  }
+}
+
+/* Rectangular menu item box */
+.menu-item {
+  background: white;              /* white background for each item */
+  border-radius: 8px;             /* rounded corners */
+  padding: .5rem;                 /* inner spacing inside the box */
+  display: flex;                  /* horizontal layout for text and image */
+  justify-content: space-between; /* space between text and image */
+  align-items: center;            /* vertically center content */
+  gap: 1rem;                      /* space between text and image */
+
+  min-height: 100px;              /* minimum height of the box */
+  transition: background-color 0.2s ease; /* smooth hover effect */
+}
+
+.menu-item:hover {
+  background-color: var(--cream-dark); /* background color on hover */
+}
+
+.item-text {
+  flex: 1;                         /* text takes up remaining horizontal space */
+  display: flex;                  /* flex layout for text */
+  flex-direction: column;         /* stack text vertically */
+  gap: 0.25rem;                   /* space between text lines */
+}
+
+.item-name {
+  font-weight: 1000; /* bold item name */
+}
+
+.item-desc {
+  font-size: 0.9rem; /* smaller description text */
+  color: var(--muted); /* muted color for description */
+}
+
+.item-price {
+  margin-top: auto;   /* pushes price to the bottom of the text column */
+  font-weight: 600;   /* semi-bold price */
+  color: var(--coral);/* price color */
+}
+
+.item-image {
+  width: 150px;       /* fixed image width */
+  height: 120px;      /* fixed image height (affects box height) */
+  flex-shrink: 0;     /* prevents image from shrinking in flex layout */
+}
+
+.item-image img {
+  width: 100%;        /* image fills container width */
+  height: 100%;       /* image fills container height */
+  object-fit: cover;  /* crop image without stretching */
+  border-radius: 6px; /* rounded image corners */
+}
+
+
+
+/* ============================================
+   FOOTER
+   ============================================ */
+.footer {
+  background-color: var(--brown);
+  color: var(--cream);
+  padding: 3rem 1rem;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+@media (min-width: 768px) {
+  .footer-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.footer-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.footer-title {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.footer-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.footer-icon {
+  flex-shrink: 0;
+  margin-top: 0.125rem;
+  color: var(--tan);
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(250, 243, 231, 0.2);
+  margin-top: 2rem;
+  padding-top: 2rem;
+  text-align: center;
+}
+
+.footer-logo {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.footer-copyright {
+  font-size: 0.875rem;
+  color: var(--muted);
+}
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Utility Classes */
+.animate-fade-in {
+  animation: fadeIn 0.8s ease-out;
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s ease-out;
+}

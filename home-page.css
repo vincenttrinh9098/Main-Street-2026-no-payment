@@ -346,7 +346,11 @@ a {
   margin-bottom: 0.3rem;
 }
 
-
+.popular-text .price {
+  font-size: 0.9rem;
+  color: #888;
+  font-weight: 400;
+}
 
 @media (max-width: 900px) {
   .popular-grid {
