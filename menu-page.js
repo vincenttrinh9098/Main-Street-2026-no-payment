@@ -67,34 +67,34 @@ const OPTION_PRESETS = {
 
 const menuData = [
   { category: "Most Popular", items: [
-      { name: "Breakfast Egg Ham Cheese Bagel", desc: "Bagel with ham, perfect for breakfast", price: "$8.25", image: "images/bagel/breakfast_ham.jpg", optionsPreset: "breakfastBagel" },
-      { name: "Breakfast Egg Sausage Cheese Bagel", desc: "Bagel with sausage, savory and delicious", price: "$8.25", image: "images/bagel/breakfast_sausage.jpg",optionsPreset: "breakfastBagel" },
-      { name: "Breakfast Egg Bacon Cheese Bagel", desc: "Bagel with crispy bacon", price: "$8.25", image: "images/bagel/breakfast_bacon.jpg",optionsPreset: "breakfastBagel"},
-      { name: "Breakfast Egg Ham Cheese Croissant", desc: "Flaky croissant with ham", price: "$9.75", image: "images/sandwich/crossaint_ham.jpg", optionsPreset: "breakfastBagel" },
-      { name: "Nova Lox Bagel", desc: "Bagel with smoked salmon", price: "$10.99", image: "images/bagel/nova_lox.jpg", optionsPreset: "breakfastBagel"},
+      { name: "Breakfast Egg Ham Cheese Bagel", desc: "Bagel with ham, cheese and egg", price: "$8.25", image: "images/bagel/breakfast_ham.jpg", optionsPreset: "breakfastBagel" },
+      { name: "Breakfast Egg Sausage Cheese Bagel", desc: "Bagel with sausage, cheese and egg", price: "$8.25", image: "images/bagel/breakfast_sausage.jpg",optionsPreset: "breakfastBagel" },
+      { name: "Breakfast Egg Bacon Cheese Bagel", desc: "Bagel with crispy bacon, cheese and egg", price: "$8.25", image: "images/bagel/breakfast_bacon.jpg",optionsPreset: "breakfastBagel"},
+      { name: "Breakfast Egg Ham Cheese Croissant", desc: "Flaky croissant with ham and cheese", price: "$9.75", image: "images/sandwich/crossaint_ham.jpg", optionsPreset: "breakfastBagel" },
+      { name: "Nova Lox Bagel", desc: "Bagel with smoked salmon and cream cheese topped with onions and tomatoes", price: "$10.99", image: "images/bagel/nova_lox.jpg", optionsPreset: "breakfastBagel"},
       { name: "Vietnamese Coffee", desc: "Rich and sweet iced coffee", price: "$6.50", image: "images/drinks/vietnamese_coffee.jpg", optionsPreset: "milkTeaToppings"}
     ]
   },
   { category: "Bagels", items: [
-      { name: "Classic Bagel", desc: "Freshly baked classic bagels", price: "$1.95", image: "images/bagel/classic_bagel.jpg", optionsPreset: "classicBagel" },
-      { name: "Gourmet Bagel", desc: "Topped with extra toppings for more flavor", price: "$2.05", image: "images/bagel/gourmet_bagel.jpg", optionsPreset: "gourmetBagel" },
-      { name: "Special Bagel", desc: "Unique flavors baked fresh daily", price: "$2.25", image: "images/bagel/special_bagel.jpg",optionsPreset: "specialBagel" }
+      { name: "Classic Bagel with Cream Cheese", desc: "Freshly baked classic bagels", price: "$1.95", image: "images/bagel/classic_bagel.jpg", optionsPreset: "classicBagel" },
+      { name: "Gourmet Bagel with Cream Cheese", desc: "Topped with extra toppings for more flavor", price: "$2.05", image: "images/bagel/gourmet_bagel.jpg", optionsPreset: "gourmetBagel" },
+      { name: "Special Bagel with Cream Cheese", desc: "Unique flavors baked fresh daily", price: "$2.25", image: "images/bagel/special_bagel.jpg",optionsPreset: "specialBagel" }
     ]
   }, 
 
 
   { category: "Sandwiches", items: [
-      { name: "Main Street Club Sandwich", desc: "Classic club sandwich with turkey and bacon", price: "$9.75", image: "images/sandwich/main_street_club_sandwich.jpg",optionsPreset: "sandwich" },
-      { name: "Main Street Special", desc: "Signature sandwich with fresh ingredients", price: "$9.25", image: "images/sandwich/main_street_special_sandwich.jpg", optionsPreset: "sandwich"},
-      { name: "Pastrami Sandwich", desc: "Savory pastrami with mustard on fresh bread", price: "$8.75", image: "images/sandwich/pastrami_sandwich.jpg",optionsPreset: "sandwich" },
-      { name: "Roast Beef Sandwich", desc: "Tender roast beef with cheese", price: "$8.75", image: "images/sandwich/roast_beef_sandwich.jpg",optionsPreset: "sandwich" },
-      { name: "Tuna Salad Sandwich", desc: "Fresh tuna salad on a soft roll", price: "$8.75", image: "images/sandwich/tuna_salad_sandwich.jpg",optionsPreset: "sandwich" },
-      { name: "Turkey Bacon Avocado Sandwich", desc: "Turkey, bacon, and avocado on fresh bread", price: "$9.75", image: "images/sandwich/turkey_bacon_avacado_sandwich.jpg",optionsPreset: "sandwich"},
-      { name: "Avacado Veggie Sandwich", desc: "Turkey, bacon, and avocado on fresh bread", price: "$8.25", image: "images/sandwich/avacado_veggies.jpg",optionsPreset: "sandwich"},
-      { name: "Grilled Chicken Club", desc: "Turkey, bacon, and avocado on fresh bread", price: "$8.25", image: "images/sandwich/grilled_chicken_club.jpg",optionsPreset: "sandwich"},
-      { name: "Turkey Sandwich", desc: "Turkey and vegetables fresh bread", price: "$8.75", image: "images/sandwich/turkey_sandwich.jpg",optionsPreset: "sandwich"},
-      { name: "Turkey Sandwich", desc: "Turkey and vegetables fresh bread", price: "$8.75", image: "images/sandwich/ham_sandwich.jpg",optionsPreset: "sandwich"},
-      { name: "Turkey Sandwich", desc: "Turkey and vegetables fresh bread", price: "$9.75", image: "images/sandwich/turkey_cranberry_sandwich.jpg",optionsPreset: "sandwich"}
+      { name: "Main Street Club Sandwich", desc: "Classic club sandwich with turkey, bacon and vegetables on fresh bread", price: "$9.75", image: "images/sandwich/main_street_club_sandwich.jpg",optionsPreset: "sandwich" },
+      { name: "Main Street Special", desc: "Signature sandwich with fresh vegetables on fresh bread", price: "$9.25", image: "images/sandwich/main_street_special_sandwich.jpg", optionsPreset: "sandwich"},
+      { name: "Pastrami Sandwich", desc: "Savory pastrami with mustard on fresh bread and vegetables on fresh bread", price: "$8.75", image: "images/sandwich/pastrami_sandwich.jpg",optionsPreset: "sandwich" },
+      { name: "Roast Beef Sandwich", desc: "Tender roast beef with cheese and vegetables on fresh bread", price: "$8.75", image: "images/sandwich/roast_beef_sandwich.jpg",optionsPreset: "sandwich" },
+      { name: "Tuna Salad Sandwich", desc: "Fresh tuna salad and vegetables on fresh bread", price: "$8.75", image: "images/sandwich/tuna_salad_sandwich.jpg",optionsPreset: "sandwich" },
+      { name: "Turkey Bacon Avocado Sandwich", desc: "Turkey, bacon, avocado, and vegetables on fresh bread", price: "$9.75", image: "images/sandwich/turkey_bacon_avacado_sandwich.jpg",optionsPreset: "sandwich"},
+      { name: "Avocado Veggie Sandwich", desc: "Avocado and vegetables on fresh bread", price: "$8.25", image: "images/sandwich/avacado_veggies.jpg",optionsPreset: "sandwich"},
+      { name: "Grilled Chicken Club", desc: "Grilled Chicken, and vegetables on fresh bread", price: "$8.25", image: "images/sandwich/grilled_chicken_club.jpg",optionsPreset: "sandwich"},
+      { name: "Turkey Sandwich", desc: "Turkey and vegetables on fresh bread", price: "$8.75", image: "images/sandwich/turkey_sandwich.jpg",optionsPreset: "sandwich"},
+      { name: "Ham Sandwich", desc: "Ham and vegetables on fresh bread", price: "$8.75", image: "images/sandwich/ham_sandwich.jpg",optionsPreset: "sandwich"},
+      { name: "Turkey Cranberry Sandwich", desc: "Turkey, cranberry and vegetables on fresh bread", price: "$9.75", image: "images/sandwich/turkey_cranberry_sandwich.jpg",optionsPreset: "sandwich"}
     ]
   },
 
@@ -112,15 +112,15 @@ const menuData = [
   },
 
 { category: "Hot Drinks", items: [
-  { name: "Latte", desc: "16 oz hot latte", price: "$4.25", image: "images/drinks/latte.jpg" },
+  { name: "Latte", desc: "16 oz Smooth Hot latte", price: "$4.25", image: "images/drinks/latte.jpg" },
   { name: "Mocha", desc: "16 oz Creamy hot mocha drink", price: "$5.25", image: "images/drinks/mocha.jpg" },
-  { name: "Hot Tea", desc: "16 ozFreshly brewed hot tea", price: "$3.50", image: "images/drinks/hot_tea.jpg" }
+  { name: "Hot Tea", desc: "16 oz Freshly brewed hot tea", price: "$3.50", image: "images/drinks/hot_tea.jpg" }
 ]},
 { category: "Iced Drinks", items: [
   { name: "Vietnamese Coffee", desc: "Rich iced Vietnamese coffee", price: "$6.50", image: "images/drinks/vietnamese_coffee.jpg" },
   { name: "Blended Latte", desc: "Iced latte blended with ice", price: "$6.00", image: "images/drinks/blended_latte.jpg" },
   { name: "Blended Mocha", desc: "Chocolate mocha iced blended drink", price: "$6.00", image: "images/drinks/blended_mocha.jpg" },
-  { name: "Blended Vietnamese Coffee", desc: "Iced coffee with ice blended smooth", price: "$7.50", image: "images/drinks/vietnamese_coffee.jpg" },
+  { name: "Blended Vietnamese Coffee", desc: "Iced Vietnamese coffee blended with ice", price: "$7.50", image: "images/drinks/vietnamese_coffee.jpg" },
   { name: "Ice Black Vietnamese Coffee", desc: "Iced strong black coffee", price: "$4.50", image: "images/drinks/vietnamese_coffee.jpg" },
   { name: "Iced Mocha", desc: "Chocolate mocha on ice", price: "$5.25", image: "images/drinks/vietnamese_coffee.jpg" },
   { name: "Iced Latte", desc: "Iced latte with smooth milk", price: "$4.25", image: "images/drinks/vietnamese_coffee.jpg" }
@@ -149,12 +149,12 @@ const menuData = [
   { name: "Thai Tea Snow Smoothie", desc: "Iced Thai tea blend", price: "$6.50", image: "images/drinks/thai_tea_snow_smoothie.jpg" , optionsPreset: "milkTeaToppings"}
 ]},
 { category: "Bubble Milk Tea", items: [
-  { name: "Thai Milk Tea", desc: "Classic Thai milk tea with tapioca", price: "$5.75", image: "images/drinks/thai_tea_snow_smoothie.jpg" , optionsPreset: "milkTeaToppings"},
+  { name: "Thai Milk Tea", desc: "Classic Thai milk tea", price: "$5.75", image: "images/drinks/thai_tea_snow_smoothie.jpg" , optionsPreset: "milkTeaToppings"},
   { name: "Milk Tea", desc: "Smooth milk tea with boba", price: "$5.75", image: "images/drinks/milk_tea.jpg" , optionsPreset: "milkTeaToppings"},
   { name: "Coconut Milk Tea", desc: "Coconut flavored milk tea", price: "$5.75", image: "images/drinks/coconut_milk_tea.jpg" , optionsPreset: "milkTeaToppings"},
   { name: "Coffee Milk Tea", desc: "Coffee infused milk tea", price: "$5.75", image: "images/drinks/coffee_milk_tea.jpg" , optionsPreset: "milkTeaToppings"},
-  { name: "Taro Milk Tea", desc: "Sweet taro milk tea with boba", price: "$5.75", image: "images/drinks/taro_milk_tea.jpg" , optionsPreset: "milkTeaToppings"},
-  { name: "Matcha Milk Tea", desc: "Iced matcha milk tea with boba", price: "$5.75", image: "images/drinks/matcha_green_tea_snow_smoothie.jpg" , optionsPreset: "milkTeaToppings"}
+  { name: "Taro Milk Tea", desc: "Sweet taro milk tea", price: "$5.75", image: "images/drinks/taro_milk_tea.jpg" , optionsPreset: "milkTeaToppings"},
+  { name: "Matcha Milk Tea", desc: "Iced matcha milk tea", price: "$5.75", image: "images/drinks/matcha_green_tea_snow_smoothie.jpg" , optionsPreset: "milkTeaToppings"}
 ]},
 
 ];

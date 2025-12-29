@@ -113,7 +113,7 @@ a {
   }
 
   .nav-link {
-    font-size: 0.9rem;       
+    font-size: 1rem;       
     padding: 0.3rem 0.6rem;  
   }
 }
@@ -128,8 +128,8 @@ a {
   z-index: 99;                        /* above content but below header */
   display: flex;
   justify-content: center;            /* center nav items on desktop */
-  gap: 2rem;
-  padding: 0.5rem 1rem;
+  gap: 1rem;
+  padding: 1.5rem 1rem;
   background-color: var(--cream-dark);
   border-bottom: 1px solid var(--tan);
 
@@ -140,7 +140,7 @@ a {
 
 .menu-subnav-link {
   font-family: var(--font-body);
-  font-size: 0.9rem;
+  font-size: 1rem;
   font-weight: 600;
   color: var(--brown);
   padding: 0.4rem 0.8rem;
