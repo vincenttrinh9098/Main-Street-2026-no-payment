@@ -67,7 +67,7 @@ const OPTION_PRESETS = {
 
 const menuData = [
   { category: "Most Popular", items: [
-      { name: "Breakfast Egg Ham Cheese Bagel", desc: "Bagel with ham, perfect for breakfast", price: "$8.25", image: "/images/bagel/breakfast_ham.jpg", optionsPreset: "breakfastBagel" },
+      { name: "Breakfast Egg Ham Cheese Bagel", desc: "Bagel with ham, perfect for breakfast", price: "$8.25", image: "images/bagel/breakfast_ham.jpg", optionsPreset: "breakfastBagel" },
       { name: "Breakfast Egg Sausage Cheese Bagel", desc: "Bagel with sausage, savory and delicious", price: "$8.25", image: "images/bagel/breakfast_sausage.jpg",optionsPreset: "breakfastBagel" },
       { name: "Breakfast Egg Bacon Cheese Bagel", desc: "Bagel with crispy bacon", price: "$8.25", image: "images/bagel/breakfast_bacon.jpg",optionsPreset: "breakfastBagel"},
       { name: "Breakfast Egg Ham Cheese Croissant", desc: "Flaky croissant with ham", price: "$9.75", image: "images/sandwich/crossaint_ham.jpg", optionsPreset: "breakfastBagel" },
