@@ -195,47 +195,47 @@ const OPTION_PRESETS = {
 
 const menuData = [
   { category: "Most Popular", items: [
-      { name: "Breakfast Egg Ham Cheese Bagel", desc: "Bagel with ham, cheese and egg", price: "$8.25", image: "images/bagel/breakfast_ham.jpg", optionsPreset: "breakfastBagel" },
-      { name: "Breakfast Egg Sausage Cheese Bagel", desc: "Bagel with sausage, cheese and egg", price: "$8.25", image: "images/bagel/breakfast_sausage.jpg",optionsPreset: "breakfastBagel" },
-      { name: "Breakfast Egg Bacon Cheese Bagel", desc: "Bagel with crispy bacon, cheese and egg", price: "$8.25", image: "images/bagel/breakfast_bacon.jpg",optionsPreset: "breakfastBagel"},
-      { name: "Breakfast Egg with Meat & Cheese Croissant", desc: "Flaky croissant with egg, cheese and meat", price: "$9.75", image: "images/sandwich/crossaint_ham.jpg", optionsPreset: "breakfastCroissant" },
-      { name: "Nova Lox Bagel", desc: "Bagel with smoked salmon and cream cheese topped with onions and tomatoes", price: "$10.99", image: "images/bagel/nova_lox.jpg", optionsPreset: "breakfastBagel"},
-      { name: "Turkey Bacon Avocado Sandwich", desc: "Turkey, bacon, avocado, and vegetables on fresh bread", price: "$9.75", image: "images/sandwich/turkey_bacon_avacado_sandwich.jpg",optionsPreset: "sandwich"},
-      { name: "Vietnamese Coffee", desc: "Rich and sweet iced coffee", price: "$6.50", image: "images/drinks/vietnamese_coffee.jpg", optionsPreset: "milkTeaToppings"},
-      { name: "Lava Flow Smoothie", desc: "Strawberry and banana smoothie", price: "$6.50", image: "images/drinks/lava_flow_smoothie.jpg", optionsPreset: "milkTeaToppings"},
+      { name: "Breakfast Egg Ham Cheese Bagel", desc: "Bagel with ham, cheese &  egg", price: "$8.25", image: "images/bagel/breakfast_ham.jpg", optionsPreset: "breakfastBagel" },
+      { name: "Breakfast Egg Sausage Cheese Bagel", desc: "Bagel with sausage, cheese &  egg", price: "$8.25", image: "images/bagel/breakfast_sausage.jpg",optionsPreset: "breakfastBagel" },
+      { name: "Breakfast Egg Bacon Cheese Bagel", desc: "Bagel with crispy bacon, cheese &  egg", price: "$8.25", image: "images/bagel/breakfast_bacon.jpg",optionsPreset: "breakfastBagel"},
+      { name: "Breakfast Egg with Meat & Cheese Croissant", desc: "Flaky croissant with egg, cheese &  meat", price: "$9.75", image: "images/sandwich/crossaint_ham.jpg", optionsPreset: "breakfastCroissant" },
+      { name: "Nova Lox Bagel", desc: "Bagel with smoked salmon &  cream cheese topped with onions &  tomatoes", price: "$10.99", image: "images/bagel/nova_lox.jpg", optionsPreset: "breakfastBagel"},
+      { name: "Turkey Bacon Avocado Sandwich", desc: "Turkey, bacon, avocado, &  vegetables on fresh bread", price: "$9.75", image: "images/sandwich/turkey_bacon_avacado_sandwich.jpg",optionsPreset: "sandwich"},
+      { name: "Vietnamese Coffee", desc: "Rich &  sweet iced coffee", price: "$6.50", image: "images/drinks/vietnamese_coffee.jpg", optionsPreset: "milkTeaToppings"},
+      { name: "Lava Flow Smoothie", desc: "Strawberry &  banana smoothie", price: "$6.50", image: "images/drinks/lava_flow_smoothie.jpg", optionsPreset: "milkTeaToppings"},
       { name: "Thai Tea Snow Smoothie", desc: "Iced Thai tea blend", price: "$6.50", image: "images/drinks/thai_tea_snow_smoothie.jpg" , optionsPreset: "milkTeaToppings"}
     ]
   },
   { category: "Bagels", items: [
-      { name: "Classic Bagel with Plain Cream Cheese", desc: "Freshly baked classic bagels", price: "$4.00", image: "images/bagel/bagel_cream_cheese2.jpg", optionsPreset: "classicBagelwithCream" },
-      { name: "Gourmet Bagel with Plain Cream Cheese", desc: "Topped with extra toppings for more flavor", price: "$4.30", image: "images/bagel/bagel_cream_cheese2.jpg", optionsPreset: "gourmetBagelwithCream" },
-      { name: "Special Bagel with Plain Cream Cheese", desc: "Unique flavors baked fresh daily", price: "$4.50", image: "images/bagel/bagel_cream_cheese2.jpg",optionsPreset: "specialBagelwithCream" },
-      { name: "Any Bagel with Any Flavor Cream Cheese", desc: "Unique flavors baked fresh daily", price: "$4.99", image: "images/bagel/bagel_cream_cheese2.jpg",optionsPreset: "bagelWithCreamCheese" },
+      { name: "Classic Bagel with Plain Cream Cheese", desc: "Freshly baked classic bagels with plain cream cheese", price: "$4.00", image: "images/bagel/bagel_cream_cheese2.jpg", optionsPreset: "classicBagelwithCream" },
+      { name: "Gourmet Bagel with Plain Cream Cheese", desc: "Topped with extra toppings for more flavor with plain cream cheese", price: "$4.30", image: "images/bagel/bagel_cream_cheese2.jpg", optionsPreset: "gourmetBagelwithCream" },
+      { name: "Special Bagel with Plain Cream Cheese", desc: "Unique flavors baked fresh daily with plain cream cheese", price: "$4.50", image: "images/bagel/bagel_cream_cheese2.jpg",optionsPreset: "specialBagelwithCream" },
+      { name: "Any Bagel with Any Flavor Cream Cheese", desc: "Any bagel with plain cream cheese", price: "$4.99", image: "images/bagel/bagel_cream_cheese2.jpg",optionsPreset: "bagelWithCreamCheese" },
         { name: "Classic Bagel with No Cream Cheese", desc: "Freshly baked classic bagels", price: "$1.95", image: "images/bagel/classic_bagel.jpg", optionsPreset: "classicBagelwithCream" },
         { name: "Gourmet Bagel with No Cream Cheese", desc: "Topped with extra toppings for more flavor", price: "$2.05", image: "images/bagel/gourmet_bagel.jpg", optionsPreset: "gourmetBagelwithCream" },
         { name: "Special Bagel with No Cream Cheese", desc: "Unique flavors baked fresh daily", price: "$2.20", image: "images/bagel/special_bagel.jpg",optionsPreset: "specialBagelwithCream" },
-         { name: "Bakers Dozen", desc: "Choose up to 13 bagels", price: "$25.50", image: "images/bagel/bakersdozen.jpg",optionsPreset: "bakersDozen" },
+         { name: "Bakers Dozen", desc: "Choose up to ANY 13 bagels", price: "$25.50", image: "images/bagel/bakersdozen.jpg",optionsPreset: "bakersDozen" },
     ]
   }, 
 
 
   { category: "Sandwiches", items: [
-      { name: "Main Street Club Sandwich", desc: "Classic club sandwich with turkey, bacon and vegetables on fresh bread", price: "$9.75", image: "images/sandwich/main_street_special_sandwich.jpg",optionsPreset: "sandwich" },
+      { name: "Main Street Club Sandwich", desc: "Classic club sandwich with turkey, bacon &  vegetables on fresh bread", price: "$9.75", image: "images/sandwich/main_street_special_sandwich.jpg",optionsPreset: "sandwich" },
       { name: "Main Street Special", desc: "Signature sandwich with fresh vegetables on fresh bread", price: "$9.25", image: "images/sandwich/main_street_special_sandwich.jpg", optionsPreset: "sandwich"},
-      { name: "Pastrami Sandwich", desc: "Savory pastrami with mustard on fresh bread and vegetables on fresh bread", price: "$8.75", image: "images/sandwich/pastrami_sandwich.jpg",optionsPreset: "sandwich" },
-      { name: "Roast Beef Sandwich", desc: "Tender roast beef with cheese and vegetables on fresh bread", price: "$8.75", image: "images/sandwich/roast_beef_sandwich.jpg",optionsPreset: "sandwich" },
-      { name: "Tuna Salad Sandwich", desc: "Fresh tuna salad and vegetables on fresh bread", price: "$8.75", image: "images/sandwich/tuna_salad_sandwich.jpg",optionsPreset: "sandwich" },
-      { name: "Turkey Bacon Avocado Sandwich", desc: "Turkey, bacon, avocado, and vegetables on fresh bread", price: "$9.75", image: "images/sandwich/turkey_bacon_avacado_sandwich.jpg",optionsPreset: "sandwich"},
-      { name: "Avocado Veggie Sandwich", desc: "Avocado and vegetables on fresh bread", price: "$8.25", image: "images/sandwich/avacado_veggies.jpg",optionsPreset: "sandwich"},
-      { name: "Grilled Chicken Club", desc: "Grilled Chicken, and vegetables on fresh bread", price: "$8.25", image: "images/sandwich/grilled_chicken_club.jpg",optionsPreset: "sandwich"},
-      { name: "Turkey Sandwich", desc: "Turkey and vegetables on fresh bread", price: "$8.75", image: "images/sandwich/turkey_sandwich.jpg",optionsPreset: "sandwich"},
-      { name: "Ham Sandwich", desc: "Ham and vegetables on fresh bread", price: "$8.75", image: "images/sandwich/ham_sandwich.jpg",optionsPreset: "sandwich"},
-      { name: "Turkey Cranberry Sandwich", desc: "Turkey, cranberry and vegetables on fresh bread", price: "$9.75", image: "images/sandwich/turkey_cranberry_sandwich.jpg",optionsPreset: "sandwich"}
+      { name: "Pastrami Sandwich", desc: "Savory pastrami with mustard on fresh bread &  vegetables on fresh bread", price: "$8.75", image: "images/sandwich/pastrami_sandwich.jpg",optionsPreset: "sandwich" },
+      { name: "Roast Beef Sandwich", desc: "Tender roast beef with cheese &  vegetables on fresh bread", price: "$8.75", image: "images/sandwich/roast_beef_sandwich.jpg",optionsPreset: "sandwich" },
+      { name: "Tuna Salad Sandwich", desc: "Fresh tuna salad &  vegetables on fresh bread", price: "$8.75", image: "images/sandwich/tuna_salad_sandwich.jpg",optionsPreset: "sandwich" },
+      { name: "Turkey Bacon Avocado Sandwich", desc: "Turkey, bacon, avocado, &  vegetables on fresh bread", price: "$9.75", image: "images/sandwich/turkey_bacon_avacado_sandwich.jpg",optionsPreset: "sandwich"},
+      { name: "Avocado Veggie Sandwich", desc: "Avocado &  vegetables on fresh bread", price: "$8.25", image: "images/sandwich/avacado_veggies.jpg",optionsPreset: "sandwich"},
+      { name: "Grilled Chicken Club", desc: "Grilled Chicken, &  vegetables on fresh bread", price: "$8.25", image: "images/sandwich/grilled_chicken_club.jpg",optionsPreset: "sandwich"},
+      { name: "Turkey Sandwich", desc: "Turkey &  vegetables on fresh bread", price: "$8.75", image: "images/sandwich/turkey_sandwich.jpg",optionsPreset: "sandwich"},
+      { name: "Ham Sandwich", desc: "Ham &  vegetables on fresh bread", price: "$8.75", image: "images/sandwich/ham_sandwich.jpg",optionsPreset: "sandwich"},
+      { name: "Turkey Cranberry Sandwich", desc: "Turkey, cranberry &  vegetables on fresh bread", price: "$9.75", image: "images/sandwich/turkey_cranberry_sandwich.jpg",optionsPreset: "sandwich"}
     ]
   },
 
   { category: "Specialty", items: [
-    { name: "Pepperoni Pizza Bagel", desc: "Bagel topped with pepperoni, marinara, and cheese", price: "$4.50", image: "images/specialty/pep_pizza_bagel.jpg" },
+    { name: "Pepperoni Pizza Bagel", desc: "Bagel topped with pepperoni, marinara, & cheese", price: "$4.50", image: "images/specialty/pep_pizza_bagel.jpg" },
     { name: "Plain Bagel Dog", desc: "Classic hot dog wrapped in a fresh plain bagel", price: "$4.75", image: "images/specialty/plain_bagel_dog.jpg" },
     { name: "Jalapeño Bagel Dog", desc: "Hot dog wrapped in a jalapeño-flavored bagel", price: "$5.25", image: "images/specialty/jalapeno_bagel_dog.jpg" },
     { name: "Parmesan Bagel Dog", desc: "Hot dog wrapped in a parmesan cheese bagel", price: "$5.25", image: "images/specialty/parmesan_bagel_dog.jpg" },
@@ -254,25 +254,29 @@ const menuData = [
 ]},
 { category: "Iced Drinks", items: [
   { name: "Vietnamese Coffee", desc: "Rich iced Vietnamese coffee", price: "$6.50", image: "images/drinks/vietnamese_coffee.jpg" },
-  { name: "Blended Latte", desc: "Iced latte blended with ice", price: "$6.00", image: "images/drinks/blended_latte.jpg" },
-  { name: "Blended Mocha", desc: "Chocolate mocha iced blended drink", price: "$6.00", image: "images/drinks/blended_mocha.jpg" },
+  { name: "Blended Latte", desc: "Iced latte blended with ice", price: "$6.00", image: "images/drinks/vietnamese_coffee.jpg" },
+  { name: "Blended Mocha", desc: "Chocolate mocha iced blended drink", price: "$6.00", image: "images/drinks/vietnamese_coffee.jpg" },
   { name: "Blended Vietnamese Coffee", desc: "Iced Vietnamese coffee blended with ice", price: "$7.50", image: "images/drinks/vietnamese_coffee.jpg" },
   { name: "Ice Black Vietnamese Coffee", desc: "Iced strong black coffee", price: "$4.50", image: "images/drinks/vietnamese_coffee.jpg" },
   { name: "Iced Mocha", desc: "Chocolate mocha on ice", price: "$5.25", image: "images/drinks/vietnamese_coffee.jpg" },
   { name: "Iced Latte", desc: "Iced latte with smooth milk", price: "$4.25", image: "images/drinks/vietnamese_coffee.jpg" }
 ]},
 { category: "Smoothies", items: [
-  { name: "Banana Berry Smoothie", desc: "Banana and mixed berries blended", price: "$6.50", image: "images/drinks/banana_berry_smoothie.jpg", optionsPreset: "milkTeaToppings"},
-  { name: "Berry Sunrise Smoothie", desc: "Strawberry and berry blend", price: "$6.50", image: "images/drinks/banana_berry_smoothie.jpg", optionsPreset: "milkTeaToppings"},
-  { name: "Chocolate Shake Smoothie", desc: "Chocolate smoothie shake", price: "$6.50", image: "images/drinks/chocolate_shake_smoothie.jpg" , optionsPreset: "milkTeaToppings"},
-  { name: "Mocha Blast Smoothie", desc: "Chocolate coffee smoothie", price: "$6.50", image: "images/drinks/mocha_blast_smoothie.jpg" , optionsPreset: "milkTeaToppings"},
-  { name: "Jamaican Dream Smoothie", desc: "Tropical fruit smoothie", price: "$6.50", image: "images/drinks/mango_snow_smoothie.jpg" , optionsPreset: "milkTeaToppings"},
-  { name: "Lemony Raspberry Smoothie", desc: "Lemon and raspberry blended", price: "$6.50", image: "images/drinks/lemony_rasberry_smoothie.jpg", optionsPreset: "milkTeaToppings"},
-  { name: "Orange Dream Smoothie", desc: "Orange citrus smoothie", price: "$6.50", image: "images/drinks/mango_snow_smoothie.jpg" , optionsPreset: "milkTeaToppings"},
-  { name: "Oreo Blast Smoothie", desc: "Chocolate Oreo blended smoothie", price: "$6.50", image: "images/drinks/coconut_snow_smoothie.jpg" , optionsPreset: "milkTeaToppings"},
-  { name: "Peanut Butter Smoothie", desc: "Peanut butter smoothie blend", price: "$6.50", image: "images/drinks/coconut_snow_smoothie.jpg" , optionsPreset: "milkTeaToppings"},
-  { name: "Purple Rain Smoothie", desc: "Berry and grape smoothie", price: "$6.50", image: "images/drinks/purple_rain_smoothie.jpg" , optionsPreset: "milkTeaToppings"},
-  { name: "Lava Flow Smoothie", desc: "Strawberry and banana smoothie", price: "$6.50", image: "images/drinks/lava_flow_smoothie.jpg", optionsPreset: "milkTeaToppings"}
+  { name: "Banana Berry Smoothie", desc: "Strawberry, banana &  non-fat yogurt/ice cream", price: "$6.50", image: "images/drinks/banana_berry_smoothie.jpg", optionsPreset: "milkTeaToppings"},
+  { name: "Berry Sunrise Smoothie", desc: "Strawberry, raspberry, &  banana ", price: "$6.50", image: "images/drinks/berry_sunrise_smoothie.jpg", optionsPreset: "milkTeaToppings"},
+  { name: "Chocolate Shake Smoothie", desc: "Chocolate & Ice cream", price: "$6.50", image: "images/drinks/chocolate_shake_smoothie.jpg" , optionsPreset: "milkTeaToppings"},
+  { name: "Mocha Blast Smoothie", desc: "Expresso, ice cream &  chocolate", price: "$6.50", image: "images/drinks/mocha_blast_smoothie.jpg" , optionsPreset: "milkTeaToppings"},
+  { name: "Jamaican Dream Smoothie", desc: "Pineapple, coconut, banana, mango, strawberry & non-fat yogurt/ice cream", price: "$6.50", image: "images/drinks/jamican_dream_smooth.jpg" , optionsPreset: "milkTeaToppings"},
+  { name: "Lemony Raspberry Smoothie", desc: "Lemon &  raspberry blended", price: "$6.50", image: "images/drinks/lemony_raspberry_smoothie.jpg", optionsPreset: "milkTeaToppings"},
+  { name: "Orange Dream Smoothie", desc: "Pineapple, orange & ice cream", price: "$6.50", image: "images/drinks/orange_dream_smoothie.jpg" , optionsPreset: "milkTeaToppings"},
+  { name: "Oreo Blast Smoothie", desc: "Chocolate, oreo, & non-fat yogurt/ice cream blended smoothie", price: "$6.50", image: "images/drinks/chocolate_shake_smoothie.jpg" , optionsPreset: "milkTeaToppings"},
+  { name: "Peanut Butter Banana Smoothie", desc: "Peanut butter, banana smoothie blend", price: "$6.50", image: "images/drinks/peanut_butter_banana_smoothie.jpg" , optionsPreset: "milkTeaToppings"},
+  { name: "Purple Rain Smoothie", desc: "Raspberries blended", price: "$6.50", image: "images/drinks/purple_rain_smoothie.jpg" , optionsPreset: "milkTeaToppings"},
+  { name: "Malibu Sunset", desc: "Pineapple, orange, &  banana smoothie", price: "$6.50", image: "images/drinks/malibu_sunset.png", optionsPreset: "milkTeaToppings"},
+  { name: "Pina Colada", desc: "Pineapple, coconut, & non-fat yogurt", price: "$6.50", image: "images/drinks/pina_colada_smoothie.jpg", optionsPreset: "milkTeaToppings"},
+  { name: "Raspberry Crush", desc: "Raspberries & non-fat yogurt/ice cream", price: "$6.50", image: "images/drinks/raspberry_crush_smoothie.jpg", optionsPreset: "milkTeaToppings"},
+  { name: "Lava Flow Smoothie", desc: "Pineapple, coconut, banana & strawberry", price: "$6.50", image: "images/drinks/lava_flow_smoothie.jpg", optionsPreset: "milkTeaToppings"},
+
 ]},
 { category: "Snow Smoothies", items: [
   { name: "Honeydew Snow Smoothie", desc: "Honeydew blended with ice", price: "$6.50", image: "images/drinks/honeydew_snow_smoothie.jpg", optionsPreset: "milkTeaToppings"},
