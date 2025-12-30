@@ -10,7 +10,7 @@ function formatPrice(num) {
 const OPTION_PRESETS = {
   sandwich: [
     {
-      title: "Bread Choice",
+      title: "Bread Choice (Required)",
       type: "radio",
       choices: [
         { label: "Plain roll", price: 1.00},
@@ -41,7 +41,7 @@ const OPTION_PRESETS = {
 
   classicBagelwithCream: [
     {
-      title: "Bagel Choice",
+      title: "Bagel Choice (Required)",
       type: "radio",
       choices: [
         { label: "Plain bagel", price: 0 },
@@ -64,7 +64,7 @@ const OPTION_PRESETS = {
 
   gourmetBagelwithCream: [
     {
-      title: "Bagel Choice",
+      title: "Bagel Choice (Required)",
       type: "radio",
       choices: [
         { label: "Blue Berry Crunch bagel", price: 0 },
@@ -80,7 +80,7 @@ const OPTION_PRESETS = {
 
   specialBagelwithCream: [
     {
-      title: "Bagel Choice",
+      title: "Bagel Choice (Required)",
       type: "radio",
       choices: [
         { label: "Spinach Mushroom Provolone bagel", price: 0 },
@@ -94,7 +94,7 @@ const OPTION_PRESETS = {
 
   bagelWithCreamCheese: [
     {
-      title: "Bagel Choice",
+      title: "Bagel Choice (Required)",
       type: "radio",
       choices: [
         { label: "Plain bagel", price: 0 },
@@ -125,7 +125,7 @@ const OPTION_PRESETS = {
       ]
     },
     {
-      title: "With Cream Cheese",
+      title: "With Cream Cheese (Required)",
       type: "radio",
       choices: [
         { label: "Peanut butter", price: 0 },
@@ -168,7 +168,7 @@ const OPTION_PRESETS = {
 
   breakfastCroissant: [
     {
-      title: "Protein Choices",
+      title: "Protein Choices (Required)",
       type: "radio",
       choices: [
         { label: "Bacon", price: 0},
@@ -211,7 +211,7 @@ const menuData = [
         { name: "Classic Bagel with No Cream Cheese", desc: "Freshly baked classic bagels", price: "$1.95", image: "images/bagel/classic_bagel.jpg", optionsPreset: "classicBagelwithCream" },
         { name: "Gourmet Bagel with No Cream Cheese", desc: "Topped with extra toppings for more flavor", price: "$2.05", image: "images/bagel/gourmet_bagel.jpg", optionsPreset: "gourmetBagelwithCream" },
         { name: "Special Bagel with No Cream Cheese", desc: "Unique flavors baked fresh daily", price: "$2.20", image: "images/bagel/special_bagel.jpg",optionsPreset: "specialBagelwithCream" },
-         { name: "Bakers Dozen", desc: "Unique flavors baked fresh daily", price: "$2.20", image: "images/bagel/special_bagel.jpg",optionsPreset: "bakersDozen" },
+         { name: "Bakers Dozen", desc: "Choose up to 13 bagels", price: "$25.50", image: "images/bagel/bakersdozen.jpg",optionsPreset: "bakersDozen" },
     ]
   }, 
 
@@ -291,354 +291,404 @@ const menuData = [
 ]},
 
 ];
-
 // ===========================
 // CART SETUP
-  // ===========================
-  let cart = JSON.parse(localStorage.getItem("cart")) || [];
-  const cartCountEl = document.createElement("span");
-  cartCountEl.id = "cart-count";
-  cartCountEl.style.marginLeft = "5px";
+// ===========================
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+const cartCountEl = document.createElement("span");
+cartCountEl.id = "cart-count";
+cartCountEl.style.marginLeft = "5px";
 
-  // Add cart icon to nav
-  const nav = document.querySelector(".nav");
-  const cartIcon = document.createElement("div");
-  cartIcon.id = "cart-icon";
-  cartIcon.innerHTML = "🛒";
-  cartIcon.appendChild(cartCountEl);
-  cartIcon.style.cursor = "pointer";
-  cartIcon.style.display = "inline-block";
-  cartIcon.style.marginLeft = "15px";
-  nav.appendChild(cartIcon);
+// Add cart icon to nav
+const nav = document.querySelector(".nav");
+const cartIcon = document.createElement("div");
+cartIcon.id = "cart-icon";
+cartIcon.innerHTML = "🛒";
+cartIcon.appendChild(cartCountEl);
+cartIcon.style.cursor = "pointer";
+cartIcon.style.display = "inline-block";
+cartIcon.style.marginLeft = "15px";
+nav.appendChild(cartIcon);
 
-  function updateCartCount() {
-    cartCountEl.textContent = cart.reduce((sum,item)=>sum+(item.quantity||1),0);
+function updateCartCount() {
+  cartCountEl.textContent = cart.reduce((sum, item) => sum + (item.quantity || 1), 0);
+}
+updateCartCount();
+
+// ===========================
+// BAKER'S DOZEN PRESET
+// ===========================
+const BAKER_DOZEN_PRESET = [
+  {
+    title: "Select 13 Bagels (Required)",
+    choices: [
+      "Plain Bagel","Everything Bagel","Sesame Bagel","Cinnamon Crunch Bagel",
+      "Blueberry Bagel","Onion Bagel","Garlic Bagel","Salt Bagel","Cranberry Bagel",
+      "Poppy Bagel","Strawberry Bagel","Cheddar Bagel","Spinach Bagel","Asiago Bagel",
+      "Chocolate Chip Bagel","Jalapeno Cheddar Bagel","Sourdough Bagel","Cinnamon Raisin Bagel",
+      "Garlic Herb Bagel","Whole Wheat Bagel"
+    ]
   }
-  updateCartCount();
+];
 
-  // ===========================
-  // BAKER'S DOZEN PRESET
-  // ===========================
-  const BAKER_DOZEN_PRESET = [
-    {
-      title: "Choose up to 13 Bagels",
-      choices: [
-        "Plain Bagel","Everything Bagel","Sesame Bagel","Cinnamon Crunch Bagel",
-        "Blueberry Bagel","Onion Bagel","Garlic Bagel","Salt Bagel","Cranberry Bagel",
-        "Poppy Bagel","Strawberry Bagel","Cheddar Bagel","Spinach Bagel","Asiago Bagel",
-        "Chocolate Chip Bagel","Jalapeno Cheddar Bagel","Sourdough Bagel","Cinnamon Raisin Bagel",
-        "Garlic Herb Bagel","Whole Wheat Bagel"
-      ]
+// ===========================
+// UPDATE ADD TO CART BUTTON
+// ===========================
+function updateAddToCartButton(modalOptions, addToCartBtn) {
+  const bakerItems = modalOptions.querySelectorAll(".bakers-dozen-item");
+  if (bakerItems.length) {
+    // Baker's Dozen logic
+    const total = Array.from(modalOptions.querySelectorAll(".qty-value"))
+      .reduce((sum, el) => sum + parseInt(el.textContent), 0);
+    const remaining = 13 - total;
+    if (remaining > 0) {
+      addToCartBtn.textContent = `Please add ${remaining} more`;
+      addToCartBtn.disabled = true;
+    } else if (remaining < 0) {
+      addToCartBtn.textContent = `Remove ${-remaining} bagels`;
+      addToCartBtn.disabled = true;
+    } else {
+      addToCartBtn.textContent = "Add to Cart";
+      addToCartBtn.disabled = false;
     }
-  ];
-
-  // ===========================
-  // RENDER BAKER'S DOZEN
-  // ===========================
-  function renderBakersDozen(modalOptions, addToCartBtn) {
-    const preset = BAKER_DOZEN_PRESET[0];
-    modalOptions.innerHTML = `<h4>${preset.title}</h4>`;
-
-    preset.choices.forEach((bagel, index) => {
-      const div = document.createElement("div");
-      div.className = "bakers-dozen-item";
-      div.style.display = "flex";
-      div.style.alignItems = "center";
-      div.style.gap = "10px";
-      div.style.marginBottom = "5px";
-        div.innerHTML = `
-          <span class="bagel-name">${bagel}</span>
-          <div class="bagel-qty-controls">
-            <button class="qty-btn decrease" data-index="${index}">-</button>
-            <span class="qty-value" data-index="${index}">0</span>
-            <button class="qty-btn increase" data-index="${index}">+</button>
-          </div>
-        `;
-      modalOptions.appendChild(div);
+  } else {
+    // Required options logic
+    const requiredGroups = modalOptions.querySelectorAll(".modal-options-list[data-required='true']");
+    let allSelected = true;
+    requiredGroups.forEach(group => {
+      if (group.querySelectorAll("input:checked").length === 0) allSelected = false;
     });
-
-    const qtyValues = modalOptions.querySelectorAll(".qty-value");
-
-    function updateTotal() {
-      const total = Array.from(qtyValues).reduce((sum, el) => sum + parseInt(el.textContent), 0);
-      const remaining = 13 - total;
-
-      if (remaining > 0) {
-        addToCartBtn.textContent = `Please add ${remaining} more`;
-        addToCartBtn.disabled = true;
-      } else if (remaining < 0) {
-        addToCartBtn.textContent = `Remove ${-remaining} bagels`;
-        addToCartBtn.disabled = true;
-      } else {
-        addToCartBtn.textContent = `Add to Cart`;
-        addToCartBtn.disabled = false;
-      }
+    if (!allSelected) {
+      addToCartBtn.textContent = "Please make required selections";
+      addToCartBtn.disabled = true;
+    } else {
+      addToCartBtn.textContent = "Add to Cart";
+      addToCartBtn.disabled = false;
     }
-
-    // Button click handlers
-    modalOptions.addEventListener("click", e => {
-      if (!e.target.classList.contains("qty-btn")) return;
-      const index = parseInt(e.target.dataset.index);
-      const span = modalOptions.querySelector(`.qty-value[data-index="${index}"]`);
-      let value = parseInt(span.textContent);
-
-      if (e.target.classList.contains("increase")) value++;
-      else if (e.target.classList.contains("decrease")) value = Math.max(0, value - 1);
-
-      span.textContent = value;
-      updateTotal();
-    });
-
-    updateTotal(); // initialize
   }
+}
 
-  // ===========================
-  // RENDER MENU
-  // ===========================
-  function renderMenu() {
-    const container = document.getElementById("menu-container");
-    container.innerHTML = ""; // Clear first
+// ===========================
+// RENDER BAKER'S DOZEN
+// ===========================
+function renderBakersDozen(modalOptions, addToCartBtn) {
+  const preset = BAKER_DOZEN_PRESET[0];
+  modalOptions.innerHTML = `
+  <h4>${preset.title}</h4>
+  <hr style="margin: 10px 0; border: 1px solid var(--brown);">
+  `;
 
-    menuData.forEach(category => {
-      const section = document.createElement("section");
-      section.className = "menu-category";
-      const sectionId = category.category.toLowerCase().replace(/\s+/g, "-");
-      section.id = sectionId;
+  preset.choices.forEach((bagel, index) => {
+    const div = document.createElement("div");
+    div.className = "bakers-dozen-item";
+    div.style.display = "flex";
+    div.style.alignItems = "center";
+    div.style.justifyContent = "space-between";
+    div.style.marginBottom = "5px";
+    div.innerHTML = `
+    
+      <span class="bagel-name">${bagel}</span>
+      <div class="bagel-qty-controls">
+        <button class="qty-btn decrease" data-index="${index}">-</button>
+        <span class="qty-value" data-index="${index}">0</span>
+        <button class="qty-btn increase" data-index="${index}">+</button>
+      </div>
+    `;
+    modalOptions.appendChild(div);
+  });
 
-      section.innerHTML = `
-        <h2 class="category-title">${category.category}</h2>
-        <div class="menu-grid">
-          ${category.items.map((item, index) => `
-            <div class="menu-item" data-category="${category.category}" data-index="${index}">
-              <div class="item-text">
-                <h4 class="item-name">${item.name}</h4>
-                <p class="item-desc">${item.desc}</p>
-                <span class="item-price">${item.price}</span>
-              </div>
-              <div class="item-image">
-                <img src="${item.image}" alt="${item.name}">
-              </div>
+  modalOptions.addEventListener("click", e => {
+    if (!e.target.classList.contains("qty-btn")) return;
+    const index = parseInt(e.target.dataset.index);
+    const span = modalOptions.querySelector(`.qty-value[data-index="${index}"]`);
+    let value = parseInt(span.textContent);
+
+    if (e.target.classList.contains("increase")) value++;
+    else if (e.target.classList.contains("decrease")) value = Math.max(0, value - 1);
+
+    span.textContent = value;
+    updateAddToCartButton(modalOptions, addToCartBtn);
+  });
+
+  updateAddToCartButton(modalOptions, addToCartBtn); // initialize
+}
+
+// ===========================
+// RENDER MENU
+// ===========================
+function renderMenu() {
+  const container = document.getElementById("menu-container");
+  container.innerHTML = "";
+
+  menuData.forEach(category => {
+    const section = document.createElement("section");
+    section.className = "menu-category";
+    const sectionId = category.category.toLowerCase().replace(/\s+/g, "-");
+    section.id = sectionId;
+
+    section.innerHTML = `
+      <h2 class="category-title">${category.category}</h2>
+      <div class="menu-grid">
+        ${category.items.map((item, index) => `
+          <div class="menu-item" data-category="${category.category}" data-index="${index}">
+            <div class="item-text">
+              <h4 class="item-name">${item.name}</h4>
+              <p class="item-desc">${item.desc}</p>
+              <span class="item-price">${item.price}</span>
             </div>
-          `).join("")}
+            <div class="item-image">
+              <img src="${item.image}" alt="${item.name}">
+            </div>
+          </div>
+        `).join("")}
+      </div>
+    `;
+    container.appendChild(section);
+  });
+}
+
+// ===========================
+// INIT DOM CONTENT
+// ===========================
+document.addEventListener("DOMContentLoaded", () => {
+  renderMenu();
+
+  const subnav = document.getElementById("menu-subnav");
+  const categories = [...new Set(menuData.map(cat => cat.category))];
+  categories.forEach(category => {
+    const link = document.createElement("a");
+    link.href = `#${category.replace(/\s+/g, '-').toLowerCase()}`;
+    link.className = "menu-subnav-link";
+    link.textContent = category;
+    subnav.appendChild(link);
+  });
+
+  const modal = document.getElementById("menuModal");
+  const closeBtn = document.querySelector(".modal .close");
+  const modalName = document.getElementById("modal-item-name");
+  const modalDesc = document.getElementById("modal-item-desc");
+  const modalPrice = document.getElementById("modal-item-price");
+  const modalOptions = document.getElementById("modal-options");
+  const addToCartBtn = document.getElementById("add-to-cart-btn");
+  const modalImage = document.getElementById("modal-item-image");
+
+  const cartModal = document.getElementById("cartModal");
+  const closeCartBtn = document.getElementById("close-cart");
+  const cartItemsContainer = document.getElementById("cart-items");
+  const cartTotalEl = document.getElementById("cart-total");
+
+  // ===========================
+  // MENU ITEM CLICK
+  // ===========================
+  document.getElementById("menu-container").addEventListener("click", e => {
+    const item = e.target.closest(".menu-item");
+    if (!item) return;
+
+    const category = item.dataset.category;
+    const index = item.dataset.index;
+    const menuItem = menuData.find(c => c.category === category).items[index];
+
+    modalName.textContent = menuItem.name;
+    modalDesc.textContent = menuItem.desc;
+    modalPrice.textContent = menuItem.price;
+    modalImage.src = menuItem.image;
+    modalImage.alt = menuItem.name;
+
+    modalOptions.innerHTML = "";
+
+    if(menuItem.optionsPreset === "bakersDozen") {
+      renderBakersDozen(modalOptions, addToCartBtn);
+    } else {
+      const optionGroups = OPTION_PRESETS[menuItem.optionsPreset] || [];
+      if(optionGroups.length === 0){
+        modalOptions.innerHTML = "<p>No customizations available</p>";
+      } else {
+        optionGroups.forEach((group, groupIndex)=>{
+          const groupDiv = document.createElement("div");
+          groupDiv.className = "modal-option-group";
+          groupDiv.innerHTML = `
+            <hr style="margin: 10px 0; border: 1px solid var(--brown);">
+            <h4 class="modal-options-title">${group.title}</h4>
+            <div class="modal-options-list" data-required="${group.type === 'radio' ? 'true' : 'false'}" data-group-index="${groupIndex}">
+              ${group.choices.map(choice => `
+                <label class="option-label">
+                  <span class="option-left">
+                    <input type="${group.type}" name="option-group-${groupIndex}" data-price="${choice.price || 0}" value="${choice.label}">
+                    ${choice.label}
+                  </span>
+                  ${choice.price > 0 ? `<span class="option-price">+${formatPrice(choice.price)}</span>` : ""}
+                </label>
+              `).join("")}
+            </div>
+          `;
+          modalOptions.appendChild(groupDiv);
+        });
+      }
+      // Add event listener to update button when selecting options
+      modalOptions.addEventListener("change", ()=>updateAddToCartButton(modalOptions, addToCartBtn));
+      updateAddToCartButton(modalOptions, addToCartBtn); // initialize
+    }
+      // Add special instructions text area
+      const specialDiv = document.createElement("div");
+      specialDiv.style.marginTop = "10px";
+      specialDiv.innerHTML = `
+        <label for="special-instructions">Special instructions:</label>
+        <textarea id="special-instructions" rows="3" style="width:100%;"></textarea>
+      `;
+      modalOptions.appendChild(specialDiv);
+
+
+
+    modal.style.display = "block";
+    addToCartBtn.dataset.category = category;
+    addToCartBtn.dataset.index = index;
+  });
+
+  // ===========================
+  // ADD TO CART BUTTON
+  // ===========================
+addToCartBtn.addEventListener("click", () => {
+  const category = addToCartBtn.dataset.category;
+  const index = addToCartBtn.dataset.index;
+  const menuItem = menuData.find(c => c.category === category).items[index];
+
+  let selectedOptions = [];
+
+  // Get special instructions text
+  const specialInstructionsValue = document.getElementById("special-instructions")?.value || "";
+
+  if(menuItem.optionsPreset === "bakersDozen") {
+    const bagelInputs = modalOptions.querySelectorAll(".qty-value");
+    bagelInputs.forEach((el, idx)=>{
+      const qty = parseInt(el.textContent) || 0;
+      if(qty>0) selectedOptions.push(`${BAKER_DOZEN_PRESET[0].choices[idx]} x${qty}`);
+    });
+
+    const total = Array.from(bagelInputs).reduce((sum, el) => sum + parseInt(el.textContent), 0);
+    if(total !== 13) return; // prevent adding unless exactly 13
+
+    cart.push({
+      name: menuItem.name,
+      price: formatPrice(25),
+      basePrice: 25,
+      extraPrice: 0,
+      options: selectedOptions,
+      specialInstructions: specialInstructionsValue, // store it
+      image: menuItem.image,
+      quantity: 1
+    });
+
+  } else {
+    // Regular menu item with options
+    const checkedInputs = Array.from(modalOptions.querySelectorAll("input:checked"));
+    const extraPrice = checkedInputs.reduce((sum,input)=>sum + parseFloat(input.dataset.price || 0),0);
+    const basePrice = parsePrice(menuItem.price);
+    const finalPrice = basePrice + extraPrice;
+    selectedOptions = checkedInputs.map(i => i.value);
+
+    // Validate required radio groups
+    const requiredGroups = modalOptions.querySelectorAll(".modal-options-list[data-required='true']");
+    for(const group of requiredGroups){
+      if(group.querySelectorAll("input:checked").length === 0) return; // prevent add
+    }
+
+    cart.push({
+      name: menuItem.name,
+      price: formatPrice(finalPrice),
+      basePrice: basePrice,
+      extraPrice: extraPrice,
+      options: selectedOptions,
+      specialInstructions: specialInstructionsValue, // store it
+      image: menuItem.image,
+      quantity: 1
+    });
+  }
+
+  localStorage.setItem("cart", JSON.stringify(cart));
+  updateCartCount();
+  modal.style.display = "none";
+});
+
+
+  // ===========================
+  // CART MODAL / RENDER
+  // ===========================
+  function renderCart(){
+    cartItemsContainer.innerHTML = "";
+    let total = 0;
+
+    cart.forEach((item,index)=>{
+      const priceNum = parseFloat(item.price.replace("$",""));
+      total += priceNum * (item.quantity || 1);
+
+      const itemDiv = document.createElement("div");
+      itemDiv.className = "cart-item";
+      itemDiv.style.borderBottom = "1px solid #ddd";
+      itemDiv.style.padding = "10px 0";
+
+      itemDiv.innerHTML = `
+        <div class="cart-item-top" style="display:flex; align-items:center; gap:10px;">
+          <img src="${item.image}" alt="${item.name}" style="width:60px; height:60px; object-fit:cover; border-radius:5px;">
+          <div style="flex:1; display:flex; justify-content:space-between; align-items:center;">
+            <strong>${item.name}</strong>
+            <span class="cart-item-price">${item.price}</span>
+          </div>
+        </div>
+        <div class="cart-item-options" style="margin:5px 0 10px 70px;">
+          ${item.options.length ? `Notes: ${item.options.join(", ")}` : "Notes: None"}<br>
+          ${item.specialInstructions ? `Special instructions: ${item.specialInstructions}` : "Special instructions: None"}
+        </div>
+        <div class="cart-item-controls" style="display:flex; align-items:center; justify-content:space-between; margin-left:70px;">
+          <div class="cart-item-quantity" style="display:flex; align-items:center; gap:5px;">
+            <button class="qty-btn" data-action="decrease" data-index="${index}">-</button>
+            <span class="qty-value">${item.quantity || 1}</span>
+            <button class="qty-btn" data-action="increase" data-index="${index}">+</button>
+          </div>
+          <button class="remove-item" data-index="${index}" style="background:#ff4d4d; color:white; border:none; padding:5px 10px; border-radius:5px; cursor:pointer;">Remove</button>
         </div>
       `;
 
-      container.appendChild(section);
+      cartItemsContainer.appendChild(itemDiv);
     });
+
+    cartTotalEl.textContent = `Total: $${total.toFixed(1)}`;
   }
 
-  // ===========================
-  // INIT DOM CONTENT
-  // ===========================
-  document.addEventListener("DOMContentLoaded", () => {
-    renderMenu();
-
-    const subnav = document.getElementById("menu-subnav");
-    const categories = [...new Set(menuData.map(cat => cat.category))];
-    categories.forEach(category => {
-      const link = document.createElement("a");
-      link.href = `#${category.replace(/\s+/g, '-').toLowerCase()}`;
-      link.className = "menu-subnav-link";
-      link.textContent = category;
-      subnav.appendChild(link);
-    });
-
-    const modal = document.getElementById("menuModal");
-    const closeBtn = document.querySelector(".modal .close");
-    const modalName = document.getElementById("modal-item-name");
-    const modalDesc = document.getElementById("modal-item-desc");
-    const modalPrice = document.getElementById("modal-item-price");
-    const modalOptions = document.getElementById("modal-options");
-    const addToCartBtn = document.getElementById("add-to-cart-btn");
-    const modalImage = document.getElementById("modal-item-image");
-
-    const cartModal = document.getElementById("cartModal");
-    const closeCartBtn = document.getElementById("close-cart");
-    const cartItemsContainer = document.getElementById("cart-items");
-    const cartTotalEl = document.getElementById("cart-total");
-
-    // ===========================
-    // MENU ITEM CLICK
-    // ===========================
-    document.getElementById("menu-container").addEventListener("click", e => {
-      const item = e.target.closest(".menu-item");
-      if (!item) return;
-
-      const category = item.dataset.category;
-      const index = item.dataset.index;
-      const menuItem = menuData.find(c => c.category === category).items[index];
-
-      modalName.textContent = menuItem.name;
-      modalDesc.textContent = menuItem.desc;
-      modalPrice.textContent = menuItem.price;
-      modalImage.src = menuItem.image;
-      modalImage.alt = menuItem.name;
-
-      modalOptions.innerHTML = "";
-
-      if(menuItem.optionsPreset === "bakersDozen") {
-        renderBakersDozen(modalOptions, addToCartBtn);
-      } else {
-        const optionGroups = OPTION_PRESETS[menuItem.optionsPreset] || [];
-        if(optionGroups.length === 0){
-          modalOptions.innerHTML = "<p>No customizations available</p>";
-        } else {
-          optionGroups.forEach((group, groupIndex)=>{
-            const groupDiv = document.createElement("div");
-            groupDiv.className = "modal-option-group";
-            groupDiv.innerHTML = `
-              <hr class="modal-divider">
-              <h4 class="modal-options-title">${group.title}</h4>
-              <div class="modal-options-list" data-required="${group.type === 'radio' ? 'true' : 'false'}" data-group-index="${groupIndex}">
-                ${group.choices.map(choice => `
-                  <label class="option-label">
-                    <span class="option-left">
-                      <input type="${group.type}" name="option-group-${groupIndex}" data-price="${choice.price || 0}" value="${choice.label}">
-                      ${choice.label}
-                    </span>
-                    ${choice.price > 0 ? `<span class="option-price">+${formatPrice(choice.price)}</span>` : ""}
-                  </label>
-                `).join("")}
-              </div>
-            `;
-            modalOptions.appendChild(groupDiv);
-          });
-        }
+  // Cart quantity buttons
+  cartItemsContainer.addEventListener("click", e=>{
+    if(e.target.classList.contains("qty-btn")){
+      const index = e.target.dataset.index;
+      if(e.target.dataset.action==="increase"){
+        cart[index].quantity = (cart[index].quantity || 1) +1;
+      } else if(e.target.dataset.action==="decrease"){
+        cart[index].quantity = Math.max(1, (cart[index].quantity ||1) -1);
       }
-
-      modal.style.display = "block";
-      addToCartBtn.dataset.category = category;
-      addToCartBtn.dataset.index = index;
-    });
-
-    // ===========================
-    // ADD TO CART BUTTON
-    // ===========================
-    addToCartBtn.addEventListener("click", () => {
-      const category = addToCartBtn.dataset.category;
-      const index = addToCartBtn.dataset.index;
-      const menuItem = menuData.find(c => c.category === category).items[index];
-
-      let selectedOptions = [];
-
-      if(menuItem.optionsPreset === "bakersDozen") {
-        const bagelInputs = modalOptions.querySelectorAll(".qty-value");
-        bagelInputs.forEach((el, idx)=>{
-          const qty = parseInt(el.textContent) || 0;
-          if(qty>0) selectedOptions.push(`${BAKER_DOZEN_PRESET[0].choices[idx]} x${qty}`);
-        });
-
-        cart.push({
-          name: menuItem.name,
-          price: formatPrice(25),
-          basePrice: 25,
-          extraPrice: 0,
-          options: selectedOptions,
-          image: menuItem.image,
-          quantity: 1
-        });
-      } else {
-        const checkedInputs = Array.from(modalOptions.querySelectorAll("input:checked"));
-        const extraPrice = checkedInputs.reduce((sum,input)=>sum + parseFloat(input.dataset.price || 0),0);
-        const basePrice = parsePrice(menuItem.price);
-        const finalPrice = basePrice + extraPrice;
-        selectedOptions = checkedInputs.map(i => i.value);
-
-        cart.push({
-          name: menuItem.name,
-          price: formatPrice(finalPrice),
-          basePrice: basePrice,
-          extraPrice: extraPrice,
-          options: selectedOptions,
-          image: menuItem.image,
-          quantity: 1
-        });
-      }
-
       localStorage.setItem("cart", JSON.stringify(cart));
       updateCartCount();
-      modal.style.display = "none";
-    });
-
-    // ===========================
-    // CART MODAL / RENDER
-    // ===========================
-    function renderCart(){
-      cartItemsContainer.innerHTML = "";
-      let total = 0;
-
-      cart.forEach((item,index)=>{
-        const priceNum = parseFloat(item.price.replace("$",""));
-        total += priceNum * (item.quantity || 1);
-
-        const itemDiv = document.createElement("div");
-        itemDiv.className = "cart-item";
-        itemDiv.style.borderBottom = "1px solid #ddd";
-        itemDiv.style.padding = "10px 0";
-
-        itemDiv.innerHTML = `
-          <div class="cart-item-top" style="display:flex; align-items:center; gap:10px;">
-            <img src="${item.image}" alt="${item.name}" style="width:60px; height:60px; object-fit:cover; border-radius:5px;">
-            <div style="flex:1; display:flex; justify-content:space-between; align-items:center;">
-              <strong>${item.name}</strong>
-              <span class="cart-item-price">${item.price}</span>
-            </div>
-          </div>
-          <div class="cart-item-options" style="margin:5px 0 10px 70px;">
-            ${item.options.length ? `Notes: ${item.options.join(", ")}` : "None"}
-          </div>
-          <div class="cart-item-controls" style="display:flex; align-items:center; justify-content:space-between; margin-left:70px;">
-            <div class="cart-item-quantity" style="display:flex; align-items:center; gap:5px;">
-              <button class="qty-btn" data-action="decrease" data-index="${index}">-</button>
-              <span class="qty-value">${item.quantity || 1}</span>
-              <button class="qty-btn" data-action="increase" data-index="${index}">+</button>
-            </div>
-            <button class="remove-item" data-index="${index}" style="background:#ff4d4d; color:white; border:none; padding:5px 10px; border-radius:5px; cursor:pointer;">Remove</button>
-          </div>
-        `;
-
-        cartItemsContainer.appendChild(itemDiv);
-      });
-
-      cartTotalEl.textContent = `Total: $${total.toFixed(1)}`;
-    }
-
-    // Cart quantity buttons
-    cartItemsContainer.addEventListener("click", e=>{
-      if(e.target.classList.contains("qty-btn")){
-        const index = e.target.dataset.index;
-        if(e.target.dataset.action==="increase"){
-          cart[index].quantity = (cart[index].quantity || 1) +1;
-        } else if(e.target.dataset.action==="decrease"){
-          cart[index].quantity = Math.max(1, (cart[index].quantity ||1) -1);
-        }
-        localStorage.setItem("cart", JSON.stringify(cart));
-        updateCartCount();
-        renderCart();
-      }
-    });
-
-    // Remove cart item
-    cartItemsContainer.addEventListener("click", e=>{
-      if(e.target.classList.contains("remove-item")){
-        const index = e.target.dataset.index;
-        cart.splice(index,1);
-        localStorage.setItem("cart", JSON.stringify(cart));
-        updateCartCount();
-        renderCart();
-      }
-    });
-
-    // Open/close cart modal
-    cartIcon.addEventListener("click", ()=>{
       renderCart();
-      cartModal.style.display="block";
-    });
-    closeBtn.onclick = ()=>modal.style.display="none";
-    closeCartBtn.onclick = ()=>cartModal.style.display="none";
-    window.onclick = e=>{
-      if(e.target===modal) modal.style.display="none";
-      if(e.target===cartModal) cartModal.style.display="none";
-    };
+    }
   });
 
+  // Remove cart item
+  cartItemsContainer.addEventListener("click", e=>{
+    if(e.target.classList.contains("remove-item")){
+      const index = e.target.dataset.index;
+      cart.splice(index,1);
+      localStorage.setItem("cart", JSON.stringify(cart));
+      updateCartCount();
+      renderCart();
+    }
+  });
+
+  // Open/close cart modal
+  cartIcon.addEventListener("click", ()=>{
+    renderCart();
+    cartModal.style.display="block";
+  });
+  closeBtn.onclick = ()=>modal.style.display="none";
+  closeCartBtn.onclick = ()=>cartModal.style.display="none";
+  window.onclick = e=>{
+    if(e.target===modal) modal.style.display="none";
+    if(e.target===cartModal) cartModal.style.display="none";
+  };
+});

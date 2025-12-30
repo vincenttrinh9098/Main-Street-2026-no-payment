@@ -399,11 +399,41 @@ main {
   margin-bottom: 8px;
 }
 
+/* Container around the buttons */
 .bagel-qty-controls {
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: 8px; /* space between buttons and number */
+  margin-top: 5px;
 }
+
+/* The + and - buttons */
+.qty-btn {
+  background-color: var(--muted) !important; /* Button background */
+  color: #fff;               /* Text color */
+  border: 2px solid #4e4343 !important; /* Border color */
+  border-radius: 10px !important;
+  padding: 5px 10px !important;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.2s, transform 0.1s;
+}
+
+
+
+.qty-btn:hover {
+  background-color: #ffffff; /* Darker on hover */
+  transform: scale(1.05);
+}
+
+/* The number display */
+.qty-value {
+  min-width: 20px;
+  text-align: center;
+  font-weight: bold;
+  display: inline-block;
+}
+
 
 
 /* ============================================
