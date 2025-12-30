@@ -193,8 +193,6 @@ const OPTION_PRESETS = {
   ]
 };
 
-
-
 const menuData = [
   { category: "Most Popular", items: [
       { name: "Breakfast Egg Ham Cheese Bagel", desc: "Bagel with ham, cheese and egg", price: "$8.25", image: "images/bagel/breakfast_ham.jpg", optionsPreset: "breakfastBagel" },
@@ -213,6 +211,7 @@ const menuData = [
         { name: "Classic Bagel with No Cream Cheese", desc: "Freshly baked classic bagels", price: "$1.95", image: "images/bagel/classic_bagel.jpg", optionsPreset: "classicBagelwithCream" },
         { name: "Gourmet Bagel with No Cream Cheese", desc: "Topped with extra toppings for more flavor", price: "$2.05", image: "images/bagel/gourmet_bagel.jpg", optionsPreset: "gourmetBagelwithCream" },
         { name: "Special Bagel with No Cream Cheese", desc: "Unique flavors baked fresh daily", price: "$2.20", image: "images/bagel/special_bagel.jpg",optionsPreset: "specialBagelwithCream" },
+         { name: "Bakers Dozen", desc: "Unique flavors baked fresh daily", price: "$2.20", image: "images/bagel/special_bagel.jpg",optionsPreset: "bakersDozen" },
     ]
   }, 
 
@@ -295,326 +294,351 @@ const menuData = [
 
 // ===========================
 // CART SETUP
-// ===========================
-let cart = JSON.parse(localStorage.getItem("cart")) || [];
-const cartCountEl = document.createElement("span");
-cartCountEl.id = "cart-count";
-cartCountEl.style.marginLeft = "5px";
+  // ===========================
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  const cartCountEl = document.createElement("span");
+  cartCountEl.id = "cart-count";
+  cartCountEl.style.marginLeft = "5px";
 
-// Add cart icon to nav
-const nav = document.querySelector(".nav");
-const cartIcon = document.createElement("div");
-cartIcon.id = "cart-icon";
-cartIcon.innerHTML = "🛒";
-cartIcon.appendChild(cartCountEl);
-cartIcon.style.cursor = "pointer";
-cartIcon.style.display = "inline-block";
-cartIcon.style.marginLeft = "15px";
-nav.appendChild(cartIcon);
+  // Add cart icon to nav
+  const nav = document.querySelector(".nav");
+  const cartIcon = document.createElement("div");
+  cartIcon.id = "cart-icon";
+  cartIcon.innerHTML = "🛒";
+  cartIcon.appendChild(cartCountEl);
+  cartIcon.style.cursor = "pointer";
+  cartIcon.style.display = "inline-block";
+  cartIcon.style.marginLeft = "15px";
+  nav.appendChild(cartIcon);
 
-function updateCartCount() {
-  cartCountEl.textContent = cart.reduce((sum,item)=>sum+(item.quantity||1),0);
-}
-updateCartCount();
-
-// ===========================
-// RENDER MENU
-// ===========================
-function renderMenu() {
-  const container = document.getElementById("menu-container");
-  container.innerHTML = ""; // Clear first
-
-  menuData.forEach(category => {
-    const section = document.createElement("section");
-    section.className = "menu-category";
-    const sectionId = category.category.toLowerCase().replace(/\s+/g, "-");
-    section.id = sectionId;
-
-    section.innerHTML = `
-      <h2 class="category-title">${category.category}</h2>
-      <div class="menu-grid">
-        ${category.items.map((item, index) => `
-          <div class="menu-item" data-category="${category.category}" data-index="${index}">
-            <div class="item-text">
-              <h4 class="item-name">${item.name}</h4>
-              <p class="item-desc">${item.desc}</p>
-              <span class="item-price">${item.price}</span>
-            </div>
-            <div class="item-image">
-              <img src="${item.image}" alt="${item.name}">
-            </div>
-          </div>
-        `).join("")}
-      </div>
-    `;
-
-    container.appendChild(section);
-  });
-}
-
-// ===========================
-// INIT DOM CONTENT
-// ===========================
-document.addEventListener("DOMContentLoaded", () => {
-  renderMenu();
-
-  // Subnav
-  const subnav = document.getElementById("menu-subnav");
-  const categories = [...new Set(menuData.map(cat => cat.category))];
-  categories.forEach(category => {
-    const link = document.createElement("a");
-    link.href = `#${category.replace(/\s+/g, '-').toLowerCase()}`;
-    link.className = "menu-subnav-link";
-    link.textContent = category;
-    subnav.appendChild(link);
-  });
-
-  // Modals
-  const modal = document.getElementById("menuModal");
-  const closeBtn = document.querySelector(".modal .close");
-  const modalName = document.getElementById("modal-item-name");
-  const modalDesc = document.getElementById("modal-item-desc");
-  const modalPrice = document.getElementById("modal-item-price");
-  const modalOptions = document.getElementById("modal-options");
-  const addToCartBtn = document.getElementById("add-to-cart-btn");
-  const modalImage = document.getElementById("modal-item-image");
-
-  const cartModal = document.getElementById("cartModal");
-  const closeCartBtn = document.getElementById("close-cart");
-  const cartItemsContainer = document.getElementById("cart-items");
-  const cartTotalEl = document.getElementById("cart-total");
+  function updateCartCount() {
+    cartCountEl.textContent = cart.reduce((sum,item)=>sum+(item.quantity||1),0);
+  }
+  updateCartCount();
 
   // ===========================
-  // RENDER CART
+  // BAKER'S DOZEN PRESET
   // ===========================
-  function renderCart() {
-    cartItemsContainer.innerHTML = "";
-    let total = 0;
+  const BAKER_DOZEN_PRESET = [
+    {
+      title: "Choose up to 13 Bagels",
+      choices: [
+        "Plain Bagel","Everything Bagel","Sesame Bagel","Cinnamon Crunch Bagel",
+        "Blueberry Bagel","Onion Bagel","Garlic Bagel","Salt Bagel","Cranberry Bagel",
+        "Poppy Bagel","Strawberry Bagel","Cheddar Bagel","Spinach Bagel","Asiago Bagel",
+        "Chocolate Chip Bagel","Jalapeno Cheddar Bagel","Sourdough Bagel","Cinnamon Raisin Bagel",
+        "Garlic Herb Bagel","Whole Wheat Bagel"
+      ]
+    }
+  ];
 
-    cart.forEach((item, index) => {
-      const priceNum = parseFloat(item.price.replace("$", ""));
-      total += priceNum * (item.quantity || 1);
+  // ===========================
+  // RENDER BAKER'S DOZEN
+  // ===========================
+  function renderBakersDozen(modalOptions, addToCartBtn) {
+    const preset = BAKER_DOZEN_PRESET[0];
+    modalOptions.innerHTML = `<h4>${preset.title}</h4>`;
 
-      const itemDiv = document.createElement("div");
-      itemDiv.className = "cart-item";
-      itemDiv.style.borderBottom = "1px solid #ddd";
-      itemDiv.style.padding = "10px 0";
-
-      itemDiv.innerHTML = `
-        <div class="cart-item-top" style="display:flex; align-items:center; gap:10px;">
-          <img src="${item.image}" alt="${item.name}" style="width:60px; height:60px; object-fit:cover; border-radius:5px;">
-          <div style="flex:1; display:flex; justify-content:space-between; align-items:center;">
-            <strong>${item.name}</strong>
-            <span class="cart-item-price">${item.price}</span>
+    preset.choices.forEach((bagel, index) => {
+      const div = document.createElement("div");
+      div.className = "bakers-dozen-item";
+      div.style.display = "flex";
+      div.style.alignItems = "center";
+      div.style.gap = "10px";
+      div.style.marginBottom = "5px";
+        div.innerHTML = `
+          <span class="bagel-name">${bagel}</span>
+          <div class="bagel-qty-controls">
+            <button class="qty-btn decrease" data-index="${index}">-</button>
+            <span class="qty-value" data-index="${index}">0</span>
+            <button class="qty-btn increase" data-index="${index}">+</button>
           </div>
-        </div>
-        <div class="cart-item-options" style="margin:5px 0 10px 70px;">
-          ${item.options.length ? `Notes: ${item.options.join(", ")}` : "None"}
-        </div>
-        <div class="cart-item-controls" style="display:flex; align-items:center; justify-content:space-between; margin-left:70px;">
-          <div class="cart-item-quantity" style="display:flex; align-items:center; gap:5px;">
-            <button class="qty-btn" data-action="decrease" data-index="${index}">-</button>
-            <span class="qty-value">${item.quantity || 1}</span>
-            <button class="qty-btn" data-action="increase" data-index="${index}">+</button>
-          </div>
-          <button class="remove-item" data-index="${index}" style="background:#ff4d4d; color:white; border:none; padding:5px 10px; border-radius:5px; cursor:pointer;">Remove</button>
+        `;
+      modalOptions.appendChild(div);
+    });
+
+    const qtyValues = modalOptions.querySelectorAll(".qty-value");
+
+    function updateTotal() {
+      const total = Array.from(qtyValues).reduce((sum, el) => sum + parseInt(el.textContent), 0);
+      const remaining = 13 - total;
+
+      if (remaining > 0) {
+        addToCartBtn.textContent = `Please add ${remaining} more`;
+        addToCartBtn.disabled = true;
+      } else if (remaining < 0) {
+        addToCartBtn.textContent = `Remove ${-remaining} bagels`;
+        addToCartBtn.disabled = true;
+      } else {
+        addToCartBtn.textContent = `Add to Cart`;
+        addToCartBtn.disabled = false;
+      }
+    }
+
+    // Button click handlers
+    modalOptions.addEventListener("click", e => {
+      if (!e.target.classList.contains("qty-btn")) return;
+      const index = parseInt(e.target.dataset.index);
+      const span = modalOptions.querySelector(`.qty-value[data-index="${index}"]`);
+      let value = parseInt(span.textContent);
+
+      if (e.target.classList.contains("increase")) value++;
+      else if (e.target.classList.contains("decrease")) value = Math.max(0, value - 1);
+
+      span.textContent = value;
+      updateTotal();
+    });
+
+    updateTotal(); // initialize
+  }
+
+  // ===========================
+  // RENDER MENU
+  // ===========================
+  function renderMenu() {
+    const container = document.getElementById("menu-container");
+    container.innerHTML = ""; // Clear first
+
+    menuData.forEach(category => {
+      const section = document.createElement("section");
+      section.className = "menu-category";
+      const sectionId = category.category.toLowerCase().replace(/\s+/g, "-");
+      section.id = sectionId;
+
+      section.innerHTML = `
+        <h2 class="category-title">${category.category}</h2>
+        <div class="menu-grid">
+          ${category.items.map((item, index) => `
+            <div class="menu-item" data-category="${category.category}" data-index="${index}">
+              <div class="item-text">
+                <h4 class="item-name">${item.name}</h4>
+                <p class="item-desc">${item.desc}</p>
+                <span class="item-price">${item.price}</span>
+              </div>
+              <div class="item-image">
+                <img src="${item.image}" alt="${item.name}">
+              </div>
+            </div>
+          `).join("")}
         </div>
       `;
 
-      cartItemsContainer.appendChild(itemDiv);
+      container.appendChild(section);
+    });
+  }
+
+  // ===========================
+  // INIT DOM CONTENT
+  // ===========================
+  document.addEventListener("DOMContentLoaded", () => {
+    renderMenu();
+
+    const subnav = document.getElementById("menu-subnav");
+    const categories = [...new Set(menuData.map(cat => cat.category))];
+    categories.forEach(category => {
+      const link = document.createElement("a");
+      link.href = `#${category.replace(/\s+/g, '-').toLowerCase()}`;
+      link.className = "menu-subnav-link";
+      link.textContent = category;
+      subnav.appendChild(link);
     });
 
-    cartTotalEl.textContent = `Total: $${total.toFixed(2)}`;
-  }
+    const modal = document.getElementById("menuModal");
+    const closeBtn = document.querySelector(".modal .close");
+    const modalName = document.getElementById("modal-item-name");
+    const modalDesc = document.getElementById("modal-item-desc");
+    const modalPrice = document.getElementById("modal-item-price");
+    const modalOptions = document.getElementById("modal-options");
+    const addToCartBtn = document.getElementById("add-to-cart-btn");
+    const modalImage = document.getElementById("modal-item-image");
 
+    const cartModal = document.getElementById("cartModal");
+    const closeCartBtn = document.getElementById("close-cart");
+    const cartItemsContainer = document.getElementById("cart-items");
+    const cartTotalEl = document.getElementById("cart-total");
 
+    // ===========================
+    // MENU ITEM CLICK
+    // ===========================
+    document.getElementById("menu-container").addEventListener("click", e => {
+      const item = e.target.closest(".menu-item");
+      if (!item) return;
 
-  // ===========================
-  // Event Listeners
-  // ===========================
-// ===========================
-// Menu item click
-// ===========================
-document.getElementById("menu-container").addEventListener("click", e => {
-  const item = e.target.closest(".menu-item");
-  if (!item) return;
+      const category = item.dataset.category;
+      const index = item.dataset.index;
+      const menuItem = menuData.find(c => c.category === category).items[index];
 
-  const category = item.dataset.category;
-  const index = item.dataset.index;
-  const menuItem = menuData.find(c => c.category === category).items[index];
+      modalName.textContent = menuItem.name;
+      modalDesc.textContent = menuItem.desc;
+      modalPrice.textContent = menuItem.price;
+      modalImage.src = menuItem.image;
+      modalImage.alt = menuItem.name;
 
-  modalName.textContent = menuItem.name;
-  modalDesc.textContent = menuItem.desc;
-  modalPrice.textContent = menuItem.price;
-  modalImage.src = menuItem.image;
-  modalImage.alt = menuItem.name;
+      modalOptions.innerHTML = "";
 
-  // ===========================
-  // OPTIONS (NEW SYSTEM)
-  // ===========================
-  const optionGroups = OPTION_PRESETS[menuItem.optionsPreset] || [];
-
-  // Clear previous options
-  modalOptions.innerHTML = "";
-
-  if (optionGroups.length === 0) {
-    modalOptions.innerHTML = "<p>No customizations available</p>";
-  } else {
-      optionGroups.forEach((group, groupIndex) => {
-        const groupDiv = document.createElement("div");
-        groupDiv.className = "modal-option-group";
-
-        groupDiv.innerHTML = `
-          <hr class="modal-divider">
-          <h4 class="modal-options-title">${group.title}</h4>
-          <div class="modal-options-list" data-required="${group.type === 'radio' ? 'true' : 'false'}" data-group-index="${groupIndex}">
-            ${group.choices.map(choice => `
-              <label class="option-label">
-                <span class="option-left">
-                  <input
-                    type="${group.type}"
-                    name="option-group-${groupIndex}"
-                    data-price="${choice.price}"
-                    value="${choice.label}"
-                  >
-                  ${choice.label}
-                </span>
-                ${choice.price > 0 ? `<span class="option-price">+${formatPrice(choice.price)}</span>` : ""}
-              </label>
-            `).join("")}
-          </div>
-        `;
-
-        modalOptions.appendChild(groupDiv);
-      });
-  }
-
-  modal.style.display = "block";
-
-  addToCartBtn.dataset.category = category;
-  addToCartBtn.dataset.index = index;
-   checkRequiredSelections();
-});
-
-  // Function to check required selections
-      function checkRequiredSelections() {
-        const optionGroups = modalOptions.querySelectorAll(".modal-options-list");
-        let allSelected = true;
-
-        optionGroups.forEach(group => {
-          if (group.dataset.required === "true") {
-            const checked = group.querySelector('input[type="radio"]:checked');
-            if (!checked) {
-              allSelected = false;
-            }
-          }
-        });
-
-        // Update button text and disabled state
-        if (!allSelected) {
-          addToCartBtn.textContent = "Make Required Selection";
-          addToCartBtn.disabled = true;
+      if(menuItem.optionsPreset === "bakersDozen") {
+        renderBakersDozen(modalOptions, addToCartBtn);
+      } else {
+        const optionGroups = OPTION_PRESETS[menuItem.optionsPreset] || [];
+        if(optionGroups.length === 0){
+          modalOptions.innerHTML = "<p>No customizations available</p>";
         } else {
-          addToCartBtn.textContent = "Add to Cart";
-          addToCartBtn.disabled = false;
+          optionGroups.forEach((group, groupIndex)=>{
+            const groupDiv = document.createElement("div");
+            groupDiv.className = "modal-option-group";
+            groupDiv.innerHTML = `
+              <hr class="modal-divider">
+              <h4 class="modal-options-title">${group.title}</h4>
+              <div class="modal-options-list" data-required="${group.type === 'radio' ? 'true' : 'false'}" data-group-index="${groupIndex}">
+                ${group.choices.map(choice => `
+                  <label class="option-label">
+                    <span class="option-left">
+                      <input type="${group.type}" name="option-group-${groupIndex}" data-price="${choice.price || 0}" value="${choice.label}">
+                      ${choice.label}
+                    </span>
+                    ${choice.price > 0 ? `<span class="option-price">+${formatPrice(choice.price)}</span>` : ""}
+                  </label>
+                `).join("")}
+              </div>
+            `;
+            modalOptions.appendChild(groupDiv);
+          });
         }
       }
 
-          // Listen to option selection changes
-    modalOptions.addEventListener("change", () => {
-      checkRequiredSelections();
+      modal.style.display = "block";
+      addToCartBtn.dataset.category = category;
+      addToCartBtn.dataset.index = index;
     });
 
+    // ===========================
+    // ADD TO CART BUTTON
+    // ===========================
+    addToCartBtn.addEventListener("click", () => {
+      const category = addToCartBtn.dataset.category;
+      const index = addToCartBtn.dataset.index;
+      const menuItem = menuData.find(c => c.category === category).items[index];
 
+      let selectedOptions = [];
 
+      if(menuItem.optionsPreset === "bakersDozen") {
+        const bagelInputs = modalOptions.querySelectorAll(".qty-value");
+        bagelInputs.forEach((el, idx)=>{
+          const qty = parseInt(el.textContent) || 0;
+          if(qty>0) selectedOptions.push(`${BAKER_DOZEN_PRESET[0].choices[idx]} x${qty}`);
+        });
 
-// Add to cart (WITH OPTION PRICING)
-addToCartBtn.addEventListener("click", ()=>{
+        cart.push({
+          name: menuItem.name,
+          price: formatPrice(25),
+          basePrice: 25,
+          extraPrice: 0,
+          options: selectedOptions,
+          image: menuItem.image,
+          quantity: 1
+        });
+      } else {
+        const checkedInputs = Array.from(modalOptions.querySelectorAll("input:checked"));
+        const extraPrice = checkedInputs.reduce((sum,input)=>sum + parseFloat(input.dataset.price || 0),0);
+        const basePrice = parsePrice(menuItem.price);
+        const finalPrice = basePrice + extraPrice;
+        selectedOptions = checkedInputs.map(i => i.value);
 
+        cart.push({
+          name: menuItem.name,
+          price: formatPrice(finalPrice),
+          basePrice: basePrice,
+          extraPrice: extraPrice,
+          options: selectedOptions,
+          image: menuItem.image,
+          quantity: 1
+        });
+      }
 
-  const category = addToCartBtn.dataset.category;
-  const index = addToCartBtn.dataset.index;
-  const menuItem = menuData.find(c=>c.category===category).items[index];
-
-  const selectedInputs = Array.from(
-    modalOptions.querySelectorAll("input:checked")
-  );
-
-  const extraPrice = selectedInputs.reduce(
-    (sum, input) => sum + parseFloat(input.dataset.price || 0),
-    0
-  );
-
-  const basePrice = parsePrice(menuItem.price);
-  const finalPrice = basePrice + extraPrice;
-
-  cart.push({
-    name: menuItem.name,
-    price: formatPrice(finalPrice), // 👈 UPDATED
-    basePrice: basePrice,            // 👈 NEW (for clarity/future use)
-    extraPrice: extraPrice,          // 👈 NEW
-    options: selectedInputs.map(i => i.value),
-    image: menuItem.image,
-    quantity: 1
-  });
-
-  localStorage.setItem("cart", JSON.stringify(cart));
-  updateCartCount();
-  modal.style.display = "none";
-});
-
-
-  // Quantity change
-  cartItemsContainer.addEventListener("input", e=>{
-    if(e.target.classList.contains("cart-quantity-input")){
-      const index = e.target.dataset.index;
-      const qty = parseInt(e.target.value);
-      if(qty<1) { e.target.value = 1; return; }
-      cart[index].quantity = qty;
       localStorage.setItem("cart", JSON.stringify(cart));
-      renderCart();
       updateCartCount();
+      modal.style.display = "none";
+    });
+
+    // ===========================
+    // CART MODAL / RENDER
+    // ===========================
+    function renderCart(){
+      cartItemsContainer.innerHTML = "";
+      let total = 0;
+
+      cart.forEach((item,index)=>{
+        const priceNum = parseFloat(item.price.replace("$",""));
+        total += priceNum * (item.quantity || 1);
+
+        const itemDiv = document.createElement("div");
+        itemDiv.className = "cart-item";
+        itemDiv.style.borderBottom = "1px solid #ddd";
+        itemDiv.style.padding = "10px 0";
+
+        itemDiv.innerHTML = `
+          <div class="cart-item-top" style="display:flex; align-items:center; gap:10px;">
+            <img src="${item.image}" alt="${item.name}" style="width:60px; height:60px; object-fit:cover; border-radius:5px;">
+            <div style="flex:1; display:flex; justify-content:space-between; align-items:center;">
+              <strong>${item.name}</strong>
+              <span class="cart-item-price">${item.price}</span>
+            </div>
+          </div>
+          <div class="cart-item-options" style="margin:5px 0 10px 70px;">
+            ${item.options.length ? `Notes: ${item.options.join(", ")}` : "None"}
+          </div>
+          <div class="cart-item-controls" style="display:flex; align-items:center; justify-content:space-between; margin-left:70px;">
+            <div class="cart-item-quantity" style="display:flex; align-items:center; gap:5px;">
+              <button class="qty-btn" data-action="decrease" data-index="${index}">-</button>
+              <span class="qty-value">${item.quantity || 1}</span>
+              <button class="qty-btn" data-action="increase" data-index="${index}">+</button>
+            </div>
+            <button class="remove-item" data-index="${index}" style="background:#ff4d4d; color:white; border:none; padding:5px 10px; border-radius:5px; cursor:pointer;">Remove</button>
+          </div>
+        `;
+
+        cartItemsContainer.appendChild(itemDiv);
+      });
+
+      cartTotalEl.textContent = `Total: $${total.toFixed(1)}`;
     }
-  });
 
-  cartItemsContainer.addEventListener("click", e => {
-  if(e.target.classList.contains("qty-btn")){
-    const index = e.target.dataset.index;
-    if(e.target.dataset.action === "increase"){
-      cart[index].quantity = (cart[index].quantity || 1) + 1;
-    } else if(e.target.dataset.action === "decrease"){
-      cart[index].quantity = Math.max(1, (cart[index].quantity || 1) - 1);
-    }
+    // Cart quantity buttons
+    cartItemsContainer.addEventListener("click", e=>{
+      if(e.target.classList.contains("qty-btn")){
+        const index = e.target.dataset.index;
+        if(e.target.dataset.action==="increase"){
+          cart[index].quantity = (cart[index].quantity || 1) +1;
+        } else if(e.target.dataset.action==="decrease"){
+          cart[index].quantity = Math.max(1, (cart[index].quantity ||1) -1);
+        }
+        localStorage.setItem("cart", JSON.stringify(cart));
+        updateCartCount();
+        renderCart();
+      }
+    });
 
-    localStorage.setItem("cart", JSON.stringify(cart));
-    updateCartCount();
-    renderCart();
-  }
-});
+    // Remove cart item
+    cartItemsContainer.addEventListener("click", e=>{
+      if(e.target.classList.contains("remove-item")){
+        const index = e.target.dataset.index;
+        cart.splice(index,1);
+        localStorage.setItem("cart", JSON.stringify(cart));
+        updateCartCount();
+        renderCart();
+      }
+    });
 
-
-  // Remove item
-  cartItemsContainer.addEventListener("click", e=>{
-    if(e.target.classList.contains("remove-item")){
-      const index = e.target.dataset.index;
-      cart.splice(index,1);
-      localStorage.setItem("cart",JSON.stringify(cart));
-      updateCartCount();
+    // Open/close cart modal
+    cartIcon.addEventListener("click", ()=>{
       renderCart();
-    }
+      cartModal.style.display="block";
+    });
+    closeBtn.onclick = ()=>modal.style.display="none";
+    closeCartBtn.onclick = ()=>cartModal.style.display="none";
+    window.onclick = e=>{
+      if(e.target===modal) modal.style.display="none";
+      if(e.target===cartModal) cartModal.style.display="none";
+    };
   });
 
-  // Cart modal
-  cartIcon.addEventListener("click", ()=>{
-    renderCart();
-    cartModal.style.display = "block";
-  });
-
-  // Close modals
-  closeBtn.onclick = ()=>modal.style.display="none";
-  closeCartBtn.onclick = ()=>cartModal.style.display="none";
-  window.onclick = e=>{
-    if(e.target===modal) modal.style.display="none";
-    if(e.target===cartModal) cartModal.style.display="none";
-  };
-});

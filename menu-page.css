@@ -392,6 +392,18 @@ main {
 }
 
 
+.bakers-dozen-item {
+  display: flex;
+  justify-content: space-between; /* Bagel name left, buttons right */
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.bagel-qty-controls {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
 
 
 /* ============================================
