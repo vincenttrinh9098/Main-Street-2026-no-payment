@@ -290,7 +290,7 @@ const menuData = [
 ]},
 { category: "Bubble Milk Tea", items: [
   { name: "Thai Milk Tea", desc: "Classic Thai milk tea", price: "$5.75", image: "images/drinks/thai_tea_snow_smoothie.jpg" , optionsPreset: "milkTeaToppings"},
-  { name: "Milk Tea", desc: "Smooth milk tea with boba", price: "$5.75", image: "images/drinks/milk_tea.jpg" , optionsPreset: "milkTeaToppings"},
+  { name: "Milk Tea", desc: "Smooth milk tea", price: "$5.75", image: "images/drinks/milk_tea.jpg" , optionsPreset: "milkTeaToppings"},
   { name: "Coconut Milk Tea", desc: "Coconut flavored milk tea", price: "$5.75", image: "images/drinks/coconut_milk_tea.jpg" , optionsPreset: "milkTeaToppings"},
   { name: "Coffee Milk Tea", desc: "Coffee infused milk tea", price: "$5.75", image: "images/drinks/coffee_milk_tea.jpg" , optionsPreset: "milkTeaToppings"},
   { name: "Taro Milk Tea", desc: "Sweet taro milk tea", price: "$5.75", image: "images/drinks/taro_milk_tea.jpg" , optionsPreset: "milkTeaToppings"},

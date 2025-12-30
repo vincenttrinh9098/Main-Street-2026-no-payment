@@ -18,12 +18,16 @@ const grid = document.getElementById("popular-grid");
 popularItems.forEach(item => {
   const div = document.createElement("div");
   div.classList.add("popular-item");
+
   div.innerHTML = `
-    <img src="${item.img}" alt="${item.title}">
-    <div class="popular-info">
-      <h3>${item.title}</h3>
-      <p>${item.desc}</p>
-    </div>
+    <a href="menu-page.html" class="popular-link">
+      <img src="${item.img}" alt="${item.title}">
+      <div class="popular-info">
+        <h3>${item.title}</h3>
+        <p>${item.desc}</p>
+      </div>
+    </a>
   `;
+
   grid.appendChild(div);
 });
