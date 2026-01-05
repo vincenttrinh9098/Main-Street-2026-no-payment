@@ -716,6 +716,8 @@ addToCartBtn.addEventListener("click", () => {
       quantity: item.quantity || 1
     }));
 
+    console.log("Items for Stripe:", itemsForStripe);
+
     try {
       const response = await fetch("https://main-street-2026-backend.vercel.app/api/create-checkout-session", {
         method: "POST",
