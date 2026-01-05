@@ -698,4 +698,43 @@ addToCartBtn.addEventListener("click", () => {
     if(e.target===modal) modal.style.display="none";
     if(e.target===cartModal) cartModal.style.display="none";
   };
+
+
+
+  const checkoutBtn = document.getElementById("checkout-btn");
+
+  checkoutBtn.addEventListener("click", async () => {
+    if(cart.length === 0){
+      alert("Your cart is empty!");
+      return;
+    }
+
+    // Map cart items for Stripe
+    const itemsForStripe = cart.map(item => ({
+      name: item.name,
+      price: parseFloat(item.price.replace("$","")), // convert $string → number
+      quantity: item.quantity || 1
+    }));
+
+    try {
+      const response = await fetch("https://main-street-2026-backend.vercel.app/api/create-checkout-session", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ items: itemsForStripe })
+      });
+
+      const data = await response.json();
+
+      if(data.url){
+        window.location.href = data.url; // redirect to Stripe checkout
+      } else {
+        alert("Failed to create checkout session.");
+      }
+    } catch(err){
+      console.error(err);
+      alert("Error connecting to payment gateway.");
+    }
+  });
+
+  
 });
