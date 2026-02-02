@@ -4,11 +4,23 @@ paths:
 collections_config:
   content:
     path: content
-    icon: wysiwyg
+    name: Main Street Bagel Cafe
+    icon: 10k
     disable_url: false
+    preview:
+      text:
+      subtext:
+      icon:
+      icon_color:
+      icon_background_color:
+      image:
+      metadata:
+      gallery:
     disable_add: false
     disable_add_folder: false
     disable_file_actions: false
+editor:
+  default_path:
 timezone: America/Los_Angeles
 markdown:
   engine: commonmark
