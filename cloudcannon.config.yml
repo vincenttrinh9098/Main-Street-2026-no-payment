@@ -10,11 +10,12 @@ collections_config:
     path: "content"
     icon: "description"
     output: false
-    # This is the "Magic" line to force the visual view
-    available_views: ["visual", "content"]
+    # ADD THIS LINE:
+    available_editors: ["visual", "content"]
     preview_url: "/index.html"
     config:
       data_config:
+        # Ensure this path perfectly matches your file in GitHub
         home: "content/home.json"
 
 _inputs:
