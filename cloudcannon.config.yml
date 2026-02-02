@@ -1,31 +1,31 @@
-paths:
-  uploads: uploads
-  static: ''
+# Tells CloudCannon which folder to watch
 collections_config:
-  content:
-    path: content
-    icon: wysiwyg
-    disable_url: false
-    disable_add: false
-    disable_add_folder: false
-    disable_file_actions: false
-timezone: America/Los_Angeles
-markdown:
-  engine: commonmark
-  options:
-    xhtml: false
-    breaks: false
-    linkify: false
-    typographer: false
-    spaced_lists: false
-    sentence_per_line: false
-    gfm: false
-    code_block_fences: '```'
-    escape_snippets_in_code_blocks: false
-    treat_indentation_as_code: false
-    table: false
-    strikethrough: false
-    subscript: false
-    superscript: false
-    heading_ids: false
-    attributes: false
+  data:
+    path: "content"
+    output: false
+
+# This creates a "Homepage" button directly in the sidebar
+  homepage:
+    path: "content/home.json"
+    icon: "home"
+    name: "Edit Homepage"
+
+# This makes the form fields look pretty
+_inputs:
+  hero.title:
+    label: "Main Heading"
+    comment: "This is the big text at the top of the page."
+  hero.subtitle:
+    label: "Sub-heading"
+    type: text # Makes it a multi-line box
+  sections:
+    label: "Mid-Page Sections"
+    item_label: "title" # Shows the section name in the list view
+  popular.items:
+    label: "Most Popular Items"
+    item_label: "title"
+    
+# This configures where images go
+paths:
+  uploads: "images"
+  public: "/"
