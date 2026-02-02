@@ -1,21 +1,20 @@
 # cloudcannon.config.yml
-
 ssg_name: static
 paths:
   uploads: "images"
   public: "/"
 
 collections_config:
-  # This targets the FOLDER instead of the file. 
-  # It is more stable for the sidebar.
   content:
     name: "Website Content"
     path: "content"
     icon: "description"
     output: false
-    # This ensures that when they click a file in 'content', 
-    # the website shows up on the right.
     preview_url: "/index.html"
+    # This connects the Visual Preview to your data file
+    config:
+      data_config:
+        home: "content/home.json"
 
 _inputs:
   hero.title:
@@ -24,9 +23,20 @@ _inputs:
   hero.subtitle:
     label: "Banner Subtext"
     type: text
+  hero.image:
+    label: "Hero Image"
+    comment: "The large background image at the top."
   sections:
     label: "Mid-Page Content"
     item_label: "title"
+    # This helps the owner see what they are editing in the list
+    structures:
+      values:
+        - label: "Content Section"
+          value:
+            title: "New Section"
+            description: "Enter description here"
+            image: "images/placeholder.jpg"
   popular.items:
     label: "Customer Favorites"
     item_label: "title"
