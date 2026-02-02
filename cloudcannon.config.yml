@@ -1,29 +1,31 @@
-# cloudcannon.config.yml
-
-# This tells CloudCannon where the images go
 paths:
-  uploads: "images"
-  public: "/"
-
-# This defines the sidebar buttons
+  uploads: uploads
+  static: ''
 collections_config:
-  homepage:
-    name: "Edit Homepage"
-    path: "content/home.json" # Pointing directly to the file
-    icon: "home"
-    output: false
-
-# This makes the form fields pretty
-_inputs:
-  hero.title:
-    label: "Main Heading"
-    comment: "This is the big text at the top of the page."
-  hero.subtitle:
-    label: "Sub-heading"
-    type: text 
-  sections:
-    label: "Mid-Page Sections"
-    item_label: "title" 
-  popular.items:
-    label: "Most Popular Items"
-    item_label: "title"
+  content:
+    path: content
+    icon: wysiwyg
+    disable_url: false
+    disable_add: false
+    disable_add_folder: false
+    disable_file_actions: false
+timezone: America/Los_Angeles
+markdown:
+  engine: commonmark
+  options:
+    xhtml: false
+    breaks: false
+    linkify: false
+    typographer: false
+    spaced_lists: false
+    sentence_per_line: false
+    gfm: false
+    code_block_fences: '```'
+    escape_snippets_in_code_blocks: false
+    treat_indentation_as_code: false
+    table: false
+    strikethrough: false
+    subscript: false
+    superscript: false
+    heading_ids: false
+    attributes: false
