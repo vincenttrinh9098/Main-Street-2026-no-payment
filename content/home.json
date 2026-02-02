@@ -39,8 +39,8 @@
     "items": [
       {
         "img": "images/bagel/breakfast_ham.jpg",
-        "title": "Breakfast Ham Egg Cheese Bagel",
-        "desc": "Bagel with ham, egg, and cheese"
+        "title": "Breakfast Ham Egg Cheese Bage",
+        "desc": "Bagel with ham, egg, and cheesel"
       },
       {
         "img": "images/bagel/breakfast_bacon.jpg",
@@ -81,6 +81,11 @@
         "img": "images/drinks/vietnamese_coffee.jpg",
         "title": "Vietnamese Coffee",
         "desc": "Rich and sweet iced coffee"
+      },
+      {
+        "img": "images/drinks/vietnamese_coffee.jpg",
+        "title": "Vietnamese",
+        "desc": "Coffee"
       }
     ]
   }
