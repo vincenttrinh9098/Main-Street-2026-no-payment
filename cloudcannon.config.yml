@@ -10,12 +10,13 @@ collections_config:
     path: "content"
     icon: "description"
     output: false
-    # ADD THIS LINE:
+    # This forces the button to appear in the "Open With" menu
     available_editors: ["visual", "content"]
+    # This tells CloudCannon which view to open FIRST
+    default_view: "visual"
     preview_url: "/index.html"
     config:
       data_config:
-        # Ensure this path perfectly matches your file in GitHub
         home: "content/home.json"
 
 _inputs:
