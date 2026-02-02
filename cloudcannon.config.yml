@@ -10,8 +10,9 @@ collections_config:
     path: "content"
     icon: "description"
     output: false
+    # This is the "Magic" line to force the visual view
+    available_views: ["visual", "content"]
     preview_url: "/index.html"
-    # This connects the Visual Preview to your data file
     config:
       data_config:
         home: "content/home.json"
