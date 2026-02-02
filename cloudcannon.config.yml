@@ -1,29 +1,47 @@
 # cloudcannon.config.yml
 
-# This tells CloudCannon where the images go
+# 1. GENERAL SETTINGS
+ssg_name: static
 paths:
-  uploads: "images"
-  public: "/"
+  uploads: "images"  # Where new images from the owner will be saved
+  public: "/"        # Where the site is served from
 
-# This defines the sidebar buttons
+# 2. THE SIDEBAR BUTTONS
 collections_config:
   homepage:
     name: "Edit Homepage"
-    path: "content/home.json" # Pointing directly to the file
+    path: "content/home.json"
     icon: "home"
     output: false
+    # This shows your website on the right side of the editor
+    preview_url: "/index.html"
 
-# This makes the form fields pretty
+# 3. MAKING THE FORM "OWNER-FRIENDLY"
 _inputs:
+  # Hero Section
   hero.title:
     label: "Main Heading"
-    comment: "This is the big text at the top of the page."
+    comment: "The big text at the top. Note: The first space will turn into a line break."
   hero.subtitle:
-    label: "Sub-heading"
-    type: text 
+    label: "Banner Subtext"
+    type: text
+  hero.image:
+    label: "Hero Background Image"
+    comment: "Best size: 1920x1080px"
+
+  # Middle Sections
   sections:
-    label: "Mid-Page Sections"
-    item_label: "title" 
+    label: "Mid-Page Content"
+    item_label: "title" # Shows the section name in the list
+  
+  # Popular Grid
   popular.items:
-    label: "Most Popular Items"
-    item_label: "title"
+    label: "Customer Favorites"
+    item_label: "title" # Shows the name of the bagel/sandwich in the list
+    comment: "Drag and drop these to reorder them on the site."
+
+# 4. PREVENTING BUGS
+# This tells CloudCannon to treat the content folder as data, not web pages
+  data:
+    path: "content"
+    output: false
