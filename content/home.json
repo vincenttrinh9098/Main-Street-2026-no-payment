@@ -1,10 +1,9 @@
 {
   "hero": {
-    "title": "Main Street Bagel Cafe",
+    "title": "Main Street Bagel Cafe - TEST",
     "subtitle": "From classics to creations — your next favorite is waiting.",
     "image": "images/extra/bagel_header.png"
   },
-
   "sections": [
     {
       "id": "bagels",
@@ -34,7 +33,6 @@
       "reverse": true
     }
   ],
-
   "popular": {
     "title": "MOST POPULAR",
     "subtitle": "See what our customers order",
@@ -44,7 +42,6 @@
         "title": "Breakfast Ham Egg Cheese Bagel",
         "desc": "Bagel with ham, egg, and cheese"
       },
-      
       {
         "img": "images/bagel/breakfast_bacon.jpg",
         "title": "Breakfast Bacon Bagel",
