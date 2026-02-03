@@ -1,46 +1,45 @@
+# cloudcannon.config.yml
+ssg_name: static
 paths:
-  uploads: images
-  public: /
+  uploads: "images"
+  public: "/"
+
 collections_config:
   content:
-    path: content
-    name: Website Content
-    icon: description
-    url: /
-    disable_url: false
-    _enabled_editors:
-      - visual
-    disable_add: false
-    disable_add_folder: false
-    disable_file_actions: false
+    name: "Website Content"
+    path: "content"
+    icon: "description"
+    output: false
+    # This forces the button to appear in the "Open With" menu
+    available_editors: ["visual", "content"]
+    # This tells CloudCannon which view to open FIRST
+    default_view: "visual"
+    preview_url: "/index.html"
+    config:
+      data_config:
+        home: "content/home.json"
+
 _inputs:
   hero.title:
-    label: Main Heading
-    comment: The big text at the top.
-    cascade: true
+    label: "Main Heading"
+    comment: "The big text at the top."
   hero.subtitle:
+    label: "Banner Subtext"
     type: text
-    label: Banner Subtext
-    cascade: true
   hero.image:
-    label: Hero Image
-    comment: The large background image at the top.
-    cascade: true
+    label: "Hero Image"
+    comment: "The large background image at the top."
   sections:
-    label: Mid-Page Content
-    cascade: true
-    item_label: title
+    label: "Mid-Page Content"
+    item_label: "title"
+    # This helps the owner see what they are editing in the list
     structures:
-      style: select
       values:
-        - label: Content Section
+        - label: "Content Section"
           value:
-            title: New Section
-            description: Enter description here
-            image: images/placeholder.jpg
+            title: "New Section"
+            description: "Enter description here"
+            image: "images/placeholder.jpg"
   popular.items:
-    label: Customer Favorites
-    cascade: true
-    item_label: title
-timezone: Etc/UTC
-ssg_name: static
+    label: "Customer Favorites"
+    item_label: "title"
